@@ -1,15 +1,15 @@
 :root {
-  --bg: #faf8f5;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface2: #f5f1eb;
-  --border: #e5ddd4;
-  --text: #1e1812;
-  --text-muted: #8c7f72;
-  --accent: #b5763a;
-  --accent2: #4a7a9b;
-  --red: #c0392b;
-  --green: #2e7d52;
-  --shadow: rgba(30,24,18,0.08);
+  --surface2: #f4f6f8;
+  --border: #e2e6ea;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --accent: #2563eb;
+  --accent2: #0891b2;
+  --red: #dc2626;
+  --green: #16a34a;
+  --shadow: rgba(0,0,0,0.07);
   --font: 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Mono', monospace;
 }
@@ -101,7 +101,7 @@ header {
 
 /* ── Hero ── */
 .hero {
-  background: linear-gradient(135deg, #f5ede0 0%, #ede4d8 50%, #e8ddd0 100%);
+  background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 50%, #f0fdf4 100%);
   border-bottom: 1px solid var(--border);
   padding: 64px 24px;
   text-align: center;
