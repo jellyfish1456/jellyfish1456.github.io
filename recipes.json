@@ -5,7 +5,7 @@
     "author": "jellyfish1456",
     "description": "Muted tones with lifted shadows for a cinematic street photography feel.",
     "tags": ["street", "cinematic", "urban"],
-    "camera": "X-T5",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80",
       "credit": "Pedro Lastra",
@@ -35,7 +35,7 @@
     "author": "jellyfish1456",
     "description": "Warm, glowing skin tones perfect for portraits during golden hour.",
     "tags": ["portrait", "golden hour", "warm"],
-    "camera": "X-Pro3",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&fit=crop&q=80",
       "credit": "Ethan Haddox",
@@ -65,7 +65,7 @@
     "author": "jellyfish1456",
     "description": "High contrast black and white with rich deep shadows.",
     "tags": ["monochrome", "high contrast", "dramatic"],
-    "camera": "X100V",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&fit=crop&q=80",
       "credit": "Tim Trad",
@@ -95,7 +95,7 @@
     "author": "jellyfish1456",
     "description": "Punchy, saturated colors for vibrant landscape and nature photography.",
     "tags": ["landscape", "nature", "vivid"],
-    "camera": "X-T5",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&fit=crop&q=80",
       "credit": "Samuel Ferrara",
@@ -125,7 +125,7 @@
     "author": "jellyfish1456",
     "description": "Vintage film look with faded highlights and soft pastel tones.",
     "tags": ["vintage", "summer", "faded"],
-    "camera": "X-E4",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80",
       "credit": "Sean Oulashin",
@@ -155,7 +155,7 @@
     "author": "jellyfish1456",
     "description": "Neutral, accurate colors for product photography and documentation.",
     "tags": ["product", "neutral", "clean"],
-    "camera": "X-T4",
+    "camera": "X-T50",
     "photo": {
       "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fit=crop&q=80",
       "credit": "Clark Street Mercantile",
