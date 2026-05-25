@@ -254,6 +254,17 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
+async function loadVersionInfo() {
+  try {
+    const res = await fetch('./version.json');
+    const v = await res.json();
+    const vEl = document.getElementById('info-version');
+    const tEl = document.getElementById('info-deploy-time');
+    if (vEl) vEl.textContent = v.version;
+    if (tEl) tEl.textContent = v.deployTime;
+  } catch { /* silently fail */ }
+}
+
 async function init() {
   try {
     const res = await fetch('./recipes.json');
@@ -266,6 +277,7 @@ async function init() {
   buildFilterChips();
   renderCards();
   initSliders();
+  loadVersionInfo();
 
   document.getElementById('search').addEventListener('input', e => {
     searchQuery = e.target.value;
