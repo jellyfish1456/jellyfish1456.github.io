@@ -54,8 +54,12 @@ function buildToneBar(label, value) {
 function buildCard(recipe) {
   const s = recipe.settings;
   const fc = getFilmColor(s.filmSimulation);
+  const photoHtml = recipe.photo
+    ? `<img class="card-photo" src="${recipe.photo.url}" alt="${recipe.name}" loading="lazy">`
+    : '';
   return `
     <div class="card" onclick="openModal(${recipe.id})">
+      ${photoHtml}
       <div class="card-film-bar" style="background:${fc.bar}"></div>
       <div class="card-body">
         <div class="card-header">
@@ -90,6 +94,18 @@ function openModal(id) {
   if (!recipe) return;
   const s = recipe.settings;
   const fc = getFilmColor(s.filmSimulation);
+
+  const modalPhoto = document.getElementById('modal-photo');
+  if (recipe.photo) {
+    modalPhoto.src = recipe.photo.url;
+    modalPhoto.alt = recipe.name;
+    modalPhoto.style.display = 'block';
+    document.getElementById('modal-photo-credit').innerHTML =
+      `Photo by <a href="${recipe.photo.creditUrl}" target="_blank">${recipe.photo.credit}</a> on Unsplash`;
+  } else {
+    modalPhoto.style.display = 'none';
+    document.getElementById('modal-photo-credit').innerHTML = '';
+  }
 
   document.getElementById('modal-film-bar').style.background = fc.bar;
   document.getElementById('modal-title').textContent = recipe.name;

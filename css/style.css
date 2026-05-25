@@ -1,14 +1,15 @@
 :root {
-  --bg: #0e0e0e;
-  --surface: #1a1a1a;
-  --surface2: #242424;
-  --border: #2e2e2e;
-  --text: #e8e8e8;
-  --text-muted: #888;
-  --accent: #c8a97a;
-  --accent2: #8ba9c4;
-  --red: #e05c5c;
-  --green: #6db37a;
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --surface2: #f5f1eb;
+  --border: #e5ddd4;
+  --text: #1e1812;
+  --text-muted: #8c7f72;
+  --accent: #b5763a;
+  --accent2: #4a7a9b;
+  --red: #c0392b;
+  --green: #2e7d52;
+  --shadow: rgba(30,24,18,0.08);
   --font: 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Mono', monospace;
 }
@@ -34,6 +35,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 12px var(--shadow);
 }
 
 .header-inner {
@@ -65,6 +67,7 @@ header {
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  color: #fff;
 }
 
 .header-nav {
@@ -83,17 +86,22 @@ header {
   font-size: 13px;
   font-family: var(--font);
   transition: all 0.15s;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .nav-btn:hover, .nav-btn.active {
   background: var(--surface2);
   color: var(--text);
   border-color: var(--accent);
+  text-decoration: none;
 }
 
 /* ── Hero ── */
 .hero {
-  background: linear-gradient(135deg, #1a1510 0%, #0e1520 50%, #0e0e0e 100%);
+  background: linear-gradient(135deg, #f5ede0 0%, #ede4d8 50%, #e8ddd0 100%);
   border-bottom: 1px solid var(--border);
   padding: 64px 24px;
   text-align: center;
@@ -104,10 +112,11 @@ header {
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text);
+}
+
+.hero h1 span {
+  color: var(--accent);
 }
 
 .hero p {
@@ -124,9 +133,7 @@ header {
   flex-wrap: wrap;
 }
 
-.stat {
-  text-align: center;
-}
+.stat { text-align: center; }
 
 .stat-num {
   font-size: 28px;
@@ -176,6 +183,7 @@ header {
   font-family: var(--font);
   outline: none;
   transition: border-color 0.15s;
+  box-shadow: 0 1px 4px var(--shadow);
 }
 
 .search-box input:focus { border-color: var(--accent); }
@@ -206,32 +214,41 @@ header {
   cursor: pointer;
   transition: all 0.15s;
   white-space: nowrap;
+  box-shadow: 0 1px 4px var(--shadow);
 }
 
 .chip:hover { border-color: var(--accent); color: var(--text); }
-.chip.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 
 /* ── Grid ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 /* ── Recipe Card ── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 12px var(--shadow);
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(200, 169, 122, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(30,24,18,0.14);
+}
+
+.card-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background: var(--surface2);
 }
 
 .card-film-bar {
@@ -239,17 +256,18 @@ header {
   width: 100%;
 }
 
-.card-body { padding: 20px; }
+.card-body { padding: 18px 20px 20px; }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  gap: 8px;
 }
 
 .card-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text);
 }
@@ -260,29 +278,29 @@ header {
   border-radius: 12px;
   font-weight: 600;
   white-space: nowrap;
-  margin-left: 8px;
+  flex-shrink: 0;
 }
 
 .card-desc {
   color: var(--text-muted);
   font-size: 13px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   line-height: 1.5;
 }
 
 .card-meta {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
 .camera-chip {
   font-size: 12px;
   color: var(--accent2);
-  background: rgba(139, 169, 196, 0.1);
-  border: 1px solid rgba(139, 169, 196, 0.2);
+  background: rgba(74, 122, 155, 0.1);
+  border: 1px solid rgba(74, 122, 155, 0.2);
   padding: 2px 10px;
   border-radius: 4px;
   font-family: var(--mono);
@@ -294,13 +312,14 @@ header {
   background: var(--surface2);
   padding: 2px 8px;
   border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 /* Settings preview */
 .settings-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 5px;
 }
 
 .setting-row {
@@ -330,13 +349,10 @@ header {
 .tone-bars {
   display: flex;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
-.tone-bar {
-  flex: 1;
-  text-align: center;
-}
+.tone-bar { flex: 1; text-align: center; }
 
 .tone-bar-label {
   font-size: 10px;
@@ -349,6 +365,7 @@ header {
 .tone-track {
   height: 6px;
   background: var(--surface2);
+  border: 1px solid var(--border);
   border-radius: 3px;
   position: relative;
   overflow: visible;
@@ -375,7 +392,7 @@ header {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(30,24,18,0.55);
   z-index: 200;
   align-items: center;
   justify-content: center;
@@ -388,55 +405,63 @@ header {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  max-width: 660px;
+  max-width: 700px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  box-shadow: 0 24px 80px rgba(30,24,18,0.2);
+}
+
+.modal-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px 16px 0 0;
 }
 
 .modal-film-bar {
-  height: 6px;
+  height: 5px;
   width: 100%;
-  border-radius: 16px 16px 0 0;
 }
 
 .modal-body { padding: 28px; }
 
 .modal-close {
   position: absolute;
-  top: 18px;
-  right: 20px;
-  background: var(--surface2);
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.85);
   border: 1px solid var(--border);
   color: var(--text-muted);
   width: 32px;
   height: 32px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.15s;
+  backdrop-filter: blur(4px);
 }
 
-.modal-close:hover { color: var(--text); background: var(--border); }
+.modal-close:hover { color: var(--text); background: #fff; }
 
 .modal-title {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   margin-bottom: 6px;
 }
 
 .modal-desc {
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  font-size: 14px;
 }
 
-.modal-section {
-  margin-bottom: 20px;
-}
+.modal-section { margin-bottom: 20px; }
 
 .modal-section-title {
   font-size: 11px;
@@ -451,17 +476,18 @@ header {
 .modal-settings {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 7px;
 }
 
 .modal-setting {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 7px 12px;
   background: var(--surface2);
   border-radius: 6px;
   font-size: 13px;
+  border: 1px solid var(--border);
 }
 
 .modal-setting-label { color: var(--text-muted); }
@@ -472,13 +498,23 @@ header {
   font-size: 13px;
 }
 
+.photo-credit {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-align: center;
+}
+
+.photo-credit a { color: var(--text-muted); text-decoration: underline; }
+
 /* ── Submit Form ── */
 .submit-section {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px;
-  margin-top: 40px;
+  border-radius: 14px;
+  padding: 32px;
+  margin-top: 48px;
+  box-shadow: 0 2px 12px var(--shadow);
 }
 
 .submit-section h2 {
@@ -487,9 +523,9 @@ header {
   margin-bottom: 6px;
 }
 
-.submit-section p {
+.submit-section > p {
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   font-size: 14px;
 }
 
@@ -512,12 +548,13 @@ header {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background: var(--surface2);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 9px 12px;
@@ -538,7 +575,7 @@ header {
 .tone-sliders {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .slider-group {
@@ -551,6 +588,8 @@ header {
   font-size: 11px;
   color: var(--text-muted);
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .slider-group input[type=range] {
@@ -572,7 +611,7 @@ header {
   margin-top: 20px;
   padding: 11px 28px;
   background: var(--accent);
-  color: #000;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -585,7 +624,7 @@ header {
 .submit-btn:hover { opacity: 0.85; }
 
 .github-note {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 12px;
   color: var(--text-muted);
 }
@@ -595,7 +634,7 @@ header {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: var(--surface2);
+  background: var(--surface);
   border: 1px solid var(--accent);
   border-radius: 8px;
   padding: 12px 20px;
@@ -605,6 +644,7 @@ header {
   opacity: 0;
   transition: all 0.3s;
   z-index: 300;
+  box-shadow: 0 8px 32px var(--shadow);
 }
 
 .toast.show { transform: translateY(0); opacity: 1; }
@@ -612,11 +652,12 @@ header {
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
-  padding: 24px;
+  padding: 28px 24px;
   text-align: center;
   color: var(--text-muted);
   font-size: 13px;
   margin-top: 60px;
+  background: var(--surface);
 }
 
 footer a { color: var(--accent); }
@@ -639,4 +680,5 @@ footer a { color: var(--accent); }
   .form-grid { grid-template-columns: 1fr; }
   .tone-sliders { grid-template-columns: 1fr 1fr; }
   .hero-stats { gap: 20px; }
+  .modal-photo { height: 200px; }
 }
