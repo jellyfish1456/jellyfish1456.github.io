@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuji Recipes — Film Simulation Collection</title>
+  <meta name="description" content="A curated collection of Fuji X camera film simulation recipes. Discover and share settings for Classic Chrome, Velvia, Acros, and more.">
+  <meta property="og:title" content="Fuji Recipes — Film Simulation Collection">
+  <meta property="og:description" content="A curated collection of Fuji X camera film simulation recipes.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">⬡</div>
+        Fuji Recipes
+      </div>
+      <nav class="header-nav">
+        <button class="nav-btn active" onclick="scrollTo(0,0)">Browse</button>
+        <button class="nav-btn" onclick="document.getElementById('submit-section').scrollIntoView({behavior:'smooth'})">Submit</button>
+        <a href="https://github.com/jellyfish1456/jellyfish1456.github.io" target="_blank" class="nav-btn" style="display:flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Fuji Film Recipes</h1>
+    <p>A curated collection of Fujifilm X-series camera settings.<br>Find your perfect look — from cinematic muted tones to vivid landscapes.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-recipes">–</div>
+        <div class="stat-label">Recipes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-sims">–</div>
+        <div class="stat-label">Film Sims</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-cameras">–</div>
+        <div class="stat-label">Cameras</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Filters -->
+    <div class="filters">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search" placeholder="Search recipes, cameras, tags…">
+      </div>
+      <div class="filter-chips" id="filter-chips"></div>
+    </div>
+
+    <!-- Recipe Grid -->
+    <div class="grid" id="grid">
+      <div class="empty"><div class="empty-icon">📷</div><p>Loading recipes…</p></div>
+    </div>
+
+    <!-- Submit a Recipe -->
+    <section class="submit-section" id="submit-section">
+      <h2>Share Your Recipe</h2>
+      <p>Have a Fuji recipe you love? Submit it and it might get added to the collection.</p>
+
+      <form id="submit-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Recipe Name</label>
+            <input type="text" name="name" placeholder="e.g. Rainy Day Walk" required>
+          </div>
+          <div class="form-group">
+            <label>Your Name / Handle</label>
+            <input type="text" name="author" placeholder="e.g. @yourhandle">
+          </div>
+          <div class="form-group">
+            <label>Camera Model</label>
+            <input type="text" name="camera" placeholder="e.g. X-T5, X100VI">
+          </div>
+          <div class="form-group">
+            <label>Film Simulation</label>
+            <select name="filmSimulation" required>
+              <option value="">Select…</option>
+              <option>Classic Chrome</option>
+              <option>Classic Neg.</option>
+              <option>Velvia/Vivid</option>
+              <option>Provia/Standard</option>
+              <option>Astia/Soft</option>
+              <option>Eterna</option>
+              <option>Eterna Cinema</option>
+              <option>Nostalgic Neg.</option>
+              <option>Reala Ace</option>
+              <option>Acros</option>
+              <option>Acros+R</option>
+              <option>Acros+Ye</option>
+              <option>Acros+G</option>
+              <option>Monochrome</option>
+              <option>Sepia</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea name="description" placeholder="Describe the mood, best use cases, or inspiration for this recipe…"></textarea>
+          </div>
+          <div class="form-group full">
+            <label>Tags (comma separated)</label>
+            <input type="text" name="tags" placeholder="e.g. street, portrait, moody">
+          </div>
+
+          <!-- Tone sliders -->
+          <div class="form-group full">
+            <label>Tones &amp; Settings</label>
+            <div class="tone-sliders">
+              <div class="slider-group">
+                <label>Highlight</label>
+                <input type="range" name="highlightTone" min="-4" max="4" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>Shadow</label>
+                <input type="range" name="shadowTone" min="-4" max="4" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>Color</label>
+                <input type="range" name="color" min="-4" max="4" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>Sharpness</label>
+                <input type="range" name="sharpness" min="-4" max="4" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>Noise Red.</label>
+                <input type="range" name="noiseReduction" min="-4" max="4" value="-4">
+                <div class="slider-val">-4</div>
+              </div>
+              <div class="slider-group">
+                <label>Clarity</label>
+                <input type="range" name="clarity" min="-5" max="5" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>WB Shift R</label>
+                <input type="range" name="wbShiftR" min="-9" max="9" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+              <div class="slider-group">
+                <label>WB Shift B</label>
+                <input type="range" name="wbShiftB" min="-9" max="9" value="0">
+                <div class="slider-val">+0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Dynamic Range</label>
+            <select name="dynamicRange">
+              <option>DR100</option>
+              <option>DR200</option>
+              <option selected>DR400</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>White Balance</label>
+            <select name="whiteBalance">
+              <option>Auto</option>
+              <option>Daylight</option>
+              <option>Shade</option>
+              <option>Cloudy</option>
+              <option>Fluorescent 1</option>
+              <option>Fluorescent 2</option>
+              <option>Fluorescent 3</option>
+              <option>Incandescent</option>
+              <option>Underwater</option>
+              <option>Custom</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Grain Effect</label>
+            <select name="grainEffect">
+              <option>Off</option>
+              <option>Weak</option>
+              <option>Strong</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Color Chrome Effect</label>
+            <select name="colorChromeEffect">
+              <option>Off</option>
+              <option>Weak</option>
+              <option>Strong</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ISO</label>
+            <input type="text" name="iso" placeholder="e.g. Auto up to ISO 6400">
+          </div>
+          <div class="form-group">
+            <label>Exposure Comp.</label>
+            <input type="text" name="exposureComp" placeholder="e.g. -1/3, +1/3, 0">
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit via GitHub Issue →</button>
+        <p class="github-note">This will open a GitHub issue pre-filled with your recipe. A GitHub account is required.</p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-film-bar" id="modal-film-bar"></div>
+      <div class="modal-body">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+          <h2 class="modal-title" id="modal-title"></h2>
+          <span id="modal-film-badge"></span>
+        </div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:20px;flex-wrap:wrap">
+          <span class="camera-chip" id="modal-camera"></span>
+          <span style="font-size:12px;color:var(--text-muted)">by</span>
+          <span style="font-size:13px;color:var(--text-muted)" id="modal-author"></span>
+        </div>
+        <div id="modal-tags" style="margin-bottom:20px;display:flex;gap:6px;flex-wrap:wrap"></div>
+        <div class="modal-section">
+          <div class="modal-section-title">Settings</div>
+          <div class="modal-settings" id="modal-settings"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Built with ❤️ for the Fuji community · <a href="https://github.com/jellyfish1456/jellyfish1456.github.io" target="_blank">GitHub</a></p>
+    <p style="margin-top:6px;font-size:12px">All recipes are community-contributed. Camera model names belong to FUJIFILM Corporation.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
