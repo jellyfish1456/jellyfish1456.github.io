@@ -415,7 +415,7 @@ function showSpotPhoto(index) {
   spotGalleryIndex = index;
   const photo = spotGalleryPhotos[index];
   document.getElementById('spot-main-photo').src = photo.url;
-  document.getElementById('spot-photo-credit').innerHTML = `Photo by ${photo.credit} on Unsplash`;
+  document.getElementById('spot-photo-credit').innerHTML = `📷 Source: ${photo.credit}`;
   document.getElementById('spot-counter').textContent = `${index + 1} / ${spotGalleryPhotos.length}`;
   document.querySelectorAll('#spot-thumbs .gallery-thumb').forEach((el, i) => {
     el.classList.toggle('active', i === index);
