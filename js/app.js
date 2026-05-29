@@ -71,6 +71,7 @@ function buildCard(recipe) {
           <span class="camera-chip">${recipe.camera}</span>
           ${recipe.tags.map(t => `<span class="tag">#${t}</span>`).join('')}
         </div>
+        ${recipe.recipeSource ? `<div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">📖 Source: <a href="${recipe.recipeUrl}" target="_blank" onclick="event.stopPropagation()">${recipe.recipeSource}</a></div>` : ''}
         <div class="settings-grid">
           <div class="setting-row"><span class="setting-label">DR</span><span class="setting-value val-text">${s.dynamicRange}</span></div>
           <div class="setting-row"><span class="setting-label">WB</span><span class="setting-value val-text">${s.whiteBalance}</span></div>
@@ -141,6 +142,14 @@ function openModal(id) {
 
   const tagsHtml = recipe.tags.map(t => `<span class="tag">#${t}</span>`).join(' ');
   document.getElementById('modal-tags').innerHTML = tagsHtml;
+
+  const srcEl = document.getElementById('modal-source');
+  if (recipe.recipeSource && recipe.recipeUrl) {
+    srcEl.innerHTML = `📖 Recipe source: <a href="${recipe.recipeUrl}" target="_blank">${recipe.recipeSource}</a> — by ${recipe.author}`;
+    srcEl.style.display = 'block';
+  } else {
+    srcEl.style.display = 'none';
+  }
 
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
