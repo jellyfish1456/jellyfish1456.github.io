@@ -351,6 +351,261 @@ async function init() {
   });
 
   loadDestinations();
+  initExpert();
+}
+
+/* ───────────── Parameter Expert ───────────── */
+
+function initExpert() {
+  const dz = document.getElementById('dropzone');
+  const input = document.getElementById('expert-file');
+  if (!dz) return;
+
+  input.addEventListener('change', e => {
+    if (e.target.files && e.target.files[0]) analyzeFile(e.target.files[0]);
+  });
+  ['dragenter', 'dragover'].forEach(ev =>
+    dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('dragover'); }));
+  ['dragleave', 'drop'].forEach(ev =>
+    dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('dragover'); }));
+  dz.addEventListener('drop', e => {
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) analyzeFile(f);
+  });
+}
+
+function resetExpert() {
+  document.getElementById('expert-result').style.display = 'none';
+  document.getElementById('dropzone').style.display = 'flex';
+  document.getElementById('expert-file').value = '';
+  const v = document.getElementById('expert-preview-vid');
+  v.pause(); v.removeAttribute('src'); v.load();
+}
+
+function fmtShutter(t) {
+  if (!t) return null;
+  if (t >= 1) return t + 's';
+  return '1/' + Math.round(1 / t) + 's';
+}
+
+async function analyzeFile(file) {
+  document.getElementById('dropzone').style.display = 'none';
+  document.getElementById('expert-result').style.display = 'grid';
+  document.getElementById('expert-filename').textContent = file.name;
+  document.getElementById('expert-recipe-suggest').style.display = 'none';
+
+  const img = document.getElementById('expert-preview-img');
+  const vid = document.getElementById('expert-preview-vid');
+  const url = URL.createObjectURL(file);
+  const isVideo = file.type.startsWith('video/');
+
+  img.style.display = 'none';
+  vid.style.display = 'none';
+
+  if (isVideo) {
+    vid.src = url; vid.style.display = 'block';
+    await analyzeVideo(file, vid);
+  } else {
+    img.src = url; img.style.display = 'block';
+    await analyzeImage(file, img);
+  }
+}
+
+async function analyzeImage(file, imgEl) {
+  let exif = null;
+  try {
+    exif = await exifr.parse(file, { tiff: true, exif: true, gps: true, makerNote: true, mergeOutput: true });
+  } catch { exif = null; }
+
+  const hasRealParams = exif && (exif.FNumber || exif.ExposureTime || exif.ISO || exif.ISOSpeedRatings || exif.FocalLength);
+
+  if (hasRealParams) {
+    renderExifParams(exif);
+    // If no film-sim-based suggestion was shown, suggest from pixels as a fallback
+    if (document.getElementById('expert-recipe-suggest').style.display === 'none') {
+      await new Promise(res => { if (imgEl.complete) res(); else imgEl.onload = res; });
+      const est = estimateFromImage(imgEl);
+      if (!est.failed) suggestRecipeFromEstimate(est);
+    }
+  } else {
+    // fall back to pixel estimation
+    await new Promise(res => { if (imgEl.complete) res(); else imgEl.onload = res; });
+    const est = estimateFromImage(imgEl);
+    renderEstimate(est, exif);
+  }
+}
+
+async function analyzeVideo(file, vidEl) {
+  // Try container metadata (very limited); always do a frame estimate.
+  let exif = null;
+  try { exif = await exifr.parse(file).catch(() => null); } catch { exif = null; }
+
+  await new Promise(res => {
+    vidEl.onloadeddata = () => { try { vidEl.currentTime = Math.min(1, (vidEl.duration || 2) / 2); } catch {} };
+    vidEl.onseeked = res;
+    setTimeout(res, 2500); // safety
+  });
+  const est = estimateFromImage(vidEl, true);
+  est.isVideo = true;
+  renderEstimate(est, exif);
+}
+
+function estimateFromImage(el, isVideo) {
+  const w = 80, h = 80;
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+  const sw = el.naturalWidth || el.videoWidth || w;
+  const sh = el.naturalHeight || el.videoHeight || h;
+  try { ctx.drawImage(el, 0, 0, sw, sh, 0, 0, w, h); } catch { return { failed: true }; }
+  let data;
+  try { data = ctx.getImageData(0, 0, w, h).data; } catch { return { failed: true }; }
+
+  let rT = 0, gT = 0, bT = 0, lumaSum = 0, satSum = 0, n = 0;
+  const lumas = [];
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i], g = data[i + 1], b = data[i + 2];
+    rT += r; gT += g; bT += b;
+    const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+    lumaSum += luma; lumas.push(luma);
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    satSum += mx === 0 ? 0 : (mx - mn) / mx;
+    n++;
+  }
+  const avgR = rT / n, avgG = gT / n, avgB = bT / n;
+  const avgLuma = lumaSum / n;
+  const avgSat = satSum / n;
+  const variance = lumas.reduce((a, l) => a + (l - avgLuma) ** 2, 0) / n;
+  const contrast = Math.sqrt(variance);
+
+  // crude colour-temperature tendency from R:B ratio
+  const rb = avgR / (avgB || 1);
+  let wbWord, kelvin;
+  if (rb > 1.25) { wbWord = 'Warm'; kelvin = '≈ 3000–4000K (tungsten / sunset)'; }
+  else if (rb > 1.08) { wbWord = 'Slightly warm'; kelvin = '≈ 4500–5500K (daylight)'; }
+  else if (rb > 0.92) { wbWord = 'Neutral'; kelvin = '≈ 5500–6500K (daylight)'; }
+  else if (rb > 0.8) { wbWord = 'Slightly cool'; kelvin = '≈ 6500–7500K (shade / cloudy)'; }
+  else { wbWord = 'Cool'; kelvin = '≈ 7500K+ (deep shade / blue hour)'; }
+
+  const expWord = avgLuma > 175 ? 'Bright / high-key' : avgLuma > 110 ? 'Normal' : avgLuma > 60 ? 'Low / moody' : 'Dark / low-key';
+  const contrastWord = contrast > 70 ? 'High' : contrast > 45 ? 'Medium' : 'Low / flat';
+  const satWord = avgSat < 0.08 ? 'Monochrome / desaturated' : avgSat < 0.22 ? 'Muted' : avgSat < 0.4 ? 'Natural' : 'Vivid / saturated';
+
+  return { avgLuma, avgSat, contrast, rb, wbWord, kelvin, expWord, contrastWord, satWord };
+}
+
+function box(label, value, icon, estimated) {
+  if (value == null || value === '') return '';
+  return `<div class="param-box">
+    <div class="param-label">${icon || ''} ${label}</div>
+    <div class="param-value ${estimated ? 'estimated' : ''}">${value}</div>
+  </div>`;
+}
+
+function renderExifParams(e) {
+  const badge = document.getElementById('expert-source-badge');
+  badge.className = 'expert-source-badge exif';
+  badge.textContent = '✓ Real EXIF data — read from the file';
+
+  const iso = e.ISO || e.ISOSpeedRatings || (Array.isArray(e.ISOSpeedRatings) ? e.ISOSpeedRatings[0] : null);
+  const aperture = e.FNumber || e.ApertureValue;
+  const shutter = fmtShutter(e.ExposureTime);
+  const focal = e.FocalLength ? Math.round(e.FocalLength) + 'mm' : null;
+  const focal35 = e.FocalLengthIn35mmFormat ? `<small> (${Math.round(e.FocalLengthIn35mmFormat)}mm eq)</small>` : '';
+  const ec = (e.ExposureCompensation != null) ? (e.ExposureCompensation > 0 ? '+' : '') + (Math.round(e.ExposureCompensation * 10) / 10) + ' EV' : null;
+  const wbMap = { 0: 'Auto', 1: 'Manual' };
+  const wb = (e.WhiteBalance != null) ? (wbMap[e.WhiteBalance] ?? e.WhiteBalance) : null;
+  const cam = [e.Make, e.Model].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim() || null;
+  const lens = e.LensModel || e.LensMake || null;
+  const flashOn = (e.Flash != null) ? ((e.Flash & 1) ? 'Fired' : 'Off') : null;
+  const meterMap = { 1: 'Average', 2: 'Center-weighted', 3: 'Spot', 5: 'Pattern/Matrix', 6: 'Partial' };
+  const meter = (e.MeteringMode != null) ? (meterMap[e.MeteringMode] ?? e.MeteringMode) : null;
+  const date = e.DateTimeOriginal ? new Date(e.DateTimeOriginal).toLocaleString() : null;
+  // Fujifilm film simulation may surface under a few possible keys
+  const filmSim = e.FilmMode || e.FilmSimulation || e.PictureMode || null;
+
+  let html = '';
+  html += box('Aperture', aperture ? 'f/' + aperture : null, '🔘');
+  html += box('Shutter', shutter, '⏱️');
+  html += box('ISO', iso, '📊');
+  html += box('Focal Length', focal ? focal + focal35 : null, '🔭');
+  html += box('Exposure Comp.', ec, '±');
+  html += box('White Balance', wb, '🎨');
+  html += box('Metering', meter, '🎯');
+  html += box('Flash', flashOn, '⚡');
+  html += box('Camera', cam, '📷');
+  html += box('Lens', lens, '🔎');
+  html += box('Film Simulation', filmSim, '🎞️');
+  html += box('Shot On', date, '🗓️');
+  if (e.latitude && e.longitude) {
+    html += box('GPS', `<small>${e.latitude.toFixed(4)}, ${e.longitude.toFixed(4)}</small>`, '📍');
+  }
+  document.getElementById('param-grid').innerHTML = html;
+
+  suggestRecipeFromExif(e, filmSim);
+
+  document.getElementById('expert-note').innerHTML =
+    'These values were read directly from the image\'s embedded EXIF metadata, so they are the camera\'s actual settings. White Balance often only reports Auto/Manual — the fine Kelvin/shift isn\'t always stored.';
+}
+
+function renderEstimate(est, exif) {
+  const badge = document.getElementById('expert-source-badge');
+  if (est.failed) {
+    badge.className = 'expert-source-badge none';
+    badge.textContent = '✕ Couldn\'t read this file';
+    document.getElementById('param-grid').innerHTML = '';
+    document.getElementById('expert-note').textContent =
+      'The browser couldn\'t decode this file for analysis (HEIC preview is sometimes unsupported). Try a JPEG.';
+    return;
+  }
+  badge.className = 'expert-source-badge estimate';
+  badge.textContent = est.isVideo
+    ? '≈ Estimated from a video frame — no EXIF in video'
+    : '≈ Estimated from pixels — no EXIF found in this file';
+
+  let html = '';
+  html += box('White Balance', est.wbWord + ` <small>${est.kelvin}</small>`, '🎨', true);
+  html += box('Exposure', est.expWord, '💡', true);
+  html += box('Contrast', est.contrastWord, '◐', true);
+  html += box('Saturation', est.satWord, '🌈', true);
+  html += box('Aperture', '— <small>not recoverable</small>', '🔘');
+  html += box('Shutter', '— <small>not recoverable</small>', '⏱️');
+  html += box('ISO', '— <small>not recoverable</small>', '📊');
+  document.getElementById('param-grid').innerHTML = html;
+
+  suggestRecipeFromEstimate(est);
+
+  document.getElementById('expert-note').innerHTML =
+    '⚠️ This file has no EXIF metadata (common for screenshots, social-media downloads, and all videos). Aperture, shutter and ISO are <strong>physically not recoverable</strong> — that information was never stored in the pixels. The values above are rough estimates from the image colours and brightness only.';
+}
+
+function showRecipeSuggest(name, why) {
+  const r = recipes.find(x => x.name === name) || recipes.find(x => x.settings.filmSimulation === name);
+  if (!r) return;
+  const el = document.getElementById('expert-recipe-suggest');
+  el.style.display = 'block';
+  el.innerHTML = `<div class="ers-label">Closest recipe on this site</div>
+    <div class="ers-name">🎞️ ${r.name}</div>
+    <div class="ers-why">${why} · click to view settings</div>`;
+  el.onclick = () => openModal(r.id);
+}
+
+function suggestRecipeFromExif(e, filmSim) {
+  if (filmSim && recipes.length) {
+    const match = recipes.find(r => filmSim.toString().toLowerCase().includes(r.settings.filmSimulation.split('/')[0].toLowerCase()));
+    if (match) { showRecipeSuggest(match.name, `Matches the film simulation in your file (${filmSim})`); return; }
+  }
+  // otherwise fall through to nothing specific
+}
+
+function suggestRecipeFromEstimate(est) {
+  let name, why;
+  if (est.avgSat < 0.08) { name = 'Ilford HP5 Plus'; why = 'Your image is near-monochrome'; }
+  else if (est.avgSat > 0.4 && est.contrast > 55) { name = 'Velvia Landscape'; why = 'Vivid, high-contrast colours'; }
+  else if (est.rb > 1.2) { name = 'Kodachrome 64'; why = 'Warm tones, like late-day light'; }
+  else if (est.rb < 0.92 && est.avgSat < 0.25) { name = 'Eterna Cinema Street'; why = 'Cool, muted, cinematic palette'; }
+  else { name = 'Fujicolor 200'; why = 'Balanced everyday colour'; }
+  showRecipeSuggest(name, why);
 }
 
 /* ───────────── Destinations / Travel ───────────── */
