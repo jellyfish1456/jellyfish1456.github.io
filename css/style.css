@@ -598,6 +598,257 @@ header {
 
 .photo-credit a { color: var(--text-muted); text-decoration: underline; }
 
+/* ── Destinations / Travel ── */
+.destinations-section {
+  margin-top: 56px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.dest-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px var(--shadow);
+  margin-bottom: 32px;
+  background: var(--surface);
+}
+
+.dest-banner {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.dest-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+}
+
+.dest-banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 24px 28px;
+  color: #fff;
+}
+
+.dest-banner-content h3 {
+  font-size: 30px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.dest-city-zh {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+.dest-tagline {
+  font-size: 14px;
+  opacity: 0.92;
+  margin-top: 4px;
+  max-width: 600px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+.dest-meta {
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--surface2);
+}
+
+.dest-meta strong { color: var(--text); }
+
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 22px;
+}
+
+.spot-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  background: var(--surface);
+}
+
+.spot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.spot-card-photo {
+  position: relative;
+  height: 150px;
+}
+
+.spot-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.spot-card-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-family: var(--mono);
+}
+
+.spot-card-body {
+  padding: 14px 16px;
+}
+
+.spot-card-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.spot-card-name-zh {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.spot-card-recipe {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Spot modal */
+.spot-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.spot-info-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.spot-recipe-box {
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.spot-recipe-box:hover { border-color: var(--accent); }
+
+.spot-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.spot-info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.spot-recipe-box .spot-info-value {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.angle-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.angle-list li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.angle-list li::before {
+  content: counter(angle-counter);
+  counter-increment: angle-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.angle-list {
+  counter-reset: angle-counter;
+}
+
+.spot-gear {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  background: var(--surface2);
+  padding: 14px 16px;
+  border-radius: 10px;
+  border-left: 3px solid var(--accent);
+}
+
+@media (max-width: 600px) {
+  .spot-info-row { grid-template-columns: 1fr; }
+  .dest-banner-content h3 { font-size: 22px; }
+}
+
 /* ── Settings / Info Section ── */
 .settings-info-section {
   background: var(--surface);

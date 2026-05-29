@@ -24,6 +24,7 @@
       </div>
       <nav class="header-nav">
         <button class="nav-btn active" onclick="scrollTo(0,0)">Browse</button>
+        <button class="nav-btn" onclick="document.getElementById('destinations-section').scrollIntoView({behavior:'smooth'})">Destinations</button>
         <button class="nav-btn" onclick="document.getElementById('submit-section').scrollIntoView({behavior:'smooth'})">Submit</button>
         <button class="nav-btn" onclick="document.getElementById('settings-section').scrollIntoView({behavior:'smooth'})">Settings</button>
         <a href="https://github.com/jellyfish1456/jellyfish1456.github.io" target="_blank" class="nav-btn" style="display:flex;align-items:center;gap:6px">
@@ -70,6 +71,17 @@
     <div class="grid" id="grid">
       <div class="empty"><div class="empty-icon">📷</div><p>Loading recipes…</p></div>
     </div>
+
+    <!-- Destinations / Travel Guide -->
+    <section class="destinations-section" id="destinations-section">
+      <div class="section-heading">
+        <h2>✈️ Travel Shooting Guides</h2>
+        <p>City-by-city photo spots — with the best angles, timing, and which recipe to load.</p>
+      </div>
+      <div id="destinations-list">
+        <div class="empty"><div class="empty-icon">🗺️</div><p>Loading destinations…</p></div>
+      </div>
+    </section>
 
     <!-- Submit a Recipe -->
     <section class="submit-section" id="submit-section">
@@ -293,6 +305,51 @@
         <div class="modal-section">
           <div class="modal-section-title">Settings</div>
           <div class="modal-settings" id="modal-settings"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spot Modal (travel) -->
+  <div class="modal-overlay" id="spot-overlay">
+    <div class="modal">
+      <div class="modal-gallery" id="spot-gallery">
+        <div class="gallery-main">
+          <button class="gallery-arrow gallery-arrow-left" id="spot-prev" onclick="spotPrev()">‹</button>
+          <img class="modal-main-photo" id="spot-main-photo" src="" alt="">
+          <button class="gallery-arrow gallery-arrow-right" id="spot-next" onclick="spotNext()">›</button>
+          <span class="gallery-counter" id="spot-counter"></span>
+        </div>
+        <div class="gallery-thumbs" id="spot-thumbs"></div>
+      </div>
+      <div class="modal-body">
+        <button class="modal-close" onclick="closeSpotModal()">✕</button>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+          <h2 class="modal-title" id="spot-title"></h2>
+          <span id="spot-title-zh" style="font-size:16px;color:var(--text-muted)"></span>
+        </div>
+        <div id="spot-tags" style="margin-bottom:16px;display:flex;gap:6px;flex-wrap:wrap"></div>
+        <p class="photo-credit" id="spot-photo-credit" style="margin-bottom:18px"></p>
+
+        <div class="spot-info-row">
+          <div class="spot-info-box">
+            <div class="spot-info-label">⏰ Best Time</div>
+            <div class="spot-info-value" id="spot-besttime"></div>
+          </div>
+          <div class="spot-info-box spot-recipe-box" id="spot-recipe-box">
+            <div class="spot-info-label">🎞️ Recommended Recipe</div>
+            <div class="spot-info-value" id="spot-recipe"></div>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <div class="modal-section-title">📐 Best Angles &amp; Composition</div>
+          <ul class="angle-list" id="spot-angles"></ul>
+        </div>
+
+        <div class="modal-section">
+          <div class="modal-section-title">🎒 Gear &amp; Tips</div>
+          <p class="spot-gear" id="spot-gear"></p>
         </div>
       </div>
     </div>

@@ -1,0 +1,105 @@
+[
+  {
+    "id": "istanbul",
+    "city": "Istanbul",
+    "cityZh": "伊斯坦堡",
+    "country": "Turkey",
+    "countryZh": "土耳其",
+    "flag": "🇹🇷",
+    "tagline": "Where East meets West — domes, minarets, golden light over the Bosphorus.",
+    "coverPhoto": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&fit=crop&q=80",
+    "bestSeason": "Apr–May / Sep–Oct (mild, fewer crowds, soft light)",
+    "spots": [
+      {
+        "name": "Hagia Sophia",
+        "nameZh": "聖索菲亞大教堂",
+        "tags": ["architecture", "interior", "golden hour"],
+        "recommendedRecipe": "Kodachrome 64",
+        "bestTime": "Early morning (08:00–09:00) before the tour buses arrive",
+        "photos": [
+          { "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?w=800&fit=crop&q=80", "credit": "Adli Wahid" },
+          { "url": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800&fit=crop&q=80", "credit": "Raimond Klavins" },
+          { "url": "https://images.unsplash.com/photo-1591019479261-1a103585c559?w=800&fit=crop&q=80", "credit": "Engin Yapici" }
+        ],
+        "angles": [
+          "Shoot the exterior from Sultanahmet Square to the northwest — the four minarets frame the central dome symmetrically.",
+          "Inside, point straight up at the central dome and use the lower thirds for the hanging calligraphy medallions. Brace on a railing — it's dim, so you'll be around 1/30s.",
+          "For scale, place a person in the lower frame against the massive arches — it tells the story of the building's size."
+        ],
+        "gear": "Wide 16mm (24mm equiv) or wider for interiors. Bump ISO to 3200–6400; the interior is darker than it looks."
+      },
+      {
+        "name": "Blue Mosque",
+        "nameZh": "藍色清真寺",
+        "tags": ["architecture", "symmetry", "blue hour"],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Blue hour (just after sunset) when the mosque is lit and the sky is deep blue",
+        "photos": [
+          { "url": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&fit=crop&q=80", "credit": "Abdullah Öğük" },
+          { "url": "https://images.unsplash.com/photo-1591019479261-1a103585c559?w=800&fit=crop&q=80", "credit": "Engin Yapici" },
+          { "url": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800&fit=crop&q=80", "credit": "Raimond Klavins" }
+        ],
+        "angles": [
+          "Best vantage is from the gardens between Blue Mosque and Hagia Sophia — the fountain gives you a foreground and leading line to the domes.",
+          "Get low and shoot the cascading domes (the 'wedding cake' stack) slightly off-centre for depth rather than dead-on symmetry.",
+          "Inside, shoot upward into the dome to capture the famous İznik blue tiles — the colour is why Velvia's saturation works beautifully here."
+        ],
+        "gear": "Tripod for blue hour (exposures of 1–4s). Polarising filter cuts glare on the tiles."
+      },
+      {
+        "name": "Galata Tower",
+        "nameZh": "加拉達塔",
+        "tags": ["cityscape", "rooftop", "sunset"],
+        "recommendedRecipe": "Classic Negative Street",
+        "bestTime": "Late afternoon into sunset — climb the tower ~1 hour before golden hour",
+        "photos": [
+          { "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&fit=crop&q=80", "credit": "Anna Berdnik" },
+          { "url": "https://images.unsplash.com/photo-1589561253898-768105ca91a8?w=800&fit=crop&q=80", "credit": "Svetlana Gumerova" },
+          { "url": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800&fit=crop&q=80", "credit": "Raimond Klavins" }
+        ],
+        "angles": [
+          "Shoot the tower itself from the narrow cobbled streets of Galata looking up — the converging buildings act as a natural frame.",
+          "From the top, the best panorama is southeast over the Golden Horn toward the old city skyline. Wait for the call to prayer at sunset for atmosphere.",
+          "Catch the seagulls — they circle the tower constantly. Pre-focus and shoot bursts to get a bird in frame with the dome behind."
+        ],
+        "gear": "35mm (50mm equiv) for street compression below; wide for the rooftop panorama. Tower gets crowded — go at opening."
+      },
+      {
+        "name": "Grand Bazaar",
+        "nameZh": "大巴札市集",
+        "tags": ["street", "colour", "interior"],
+        "recommendedRecipe": "Fujicolor 200",
+        "bestTime": "Mid-morning (10:00–12:00) — shops open, light streams through skylights",
+        "photos": [
+          { "url": "https://images.unsplash.com/photo-1518306727298-4c17e1bf6942?w=800&fit=crop&q=80", "credit": "Jorge Fernández Salas" },
+          { "url": "https://images.unsplash.com/photo-1571406252241-db0280bd36cd?w=800&fit=crop&q=80", "credit": "Mucahit Yildiz" },
+          { "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?w=800&fit=crop&q=80", "credit": "Adli Wahid" }
+        ],
+        "angles": [
+          "Use the painted vaulted ceilings as a leading line — stand in the middle of an aisle and let the arches recede into the distance.",
+          "Shoot the lamp shops: hundreds of hanging mosaic lanterns. Expose for the lit lamps and let the surroundings fall darker for drama.",
+          "Candid stall portraits work well — ask first, then shoot the merchant amid their colourful goods. Fujicolor 200's punchy colour suits the spices and textiles."
+        ],
+        "gear": "Fast prime (f/2 or wider) for the dim interior. Keep ISO flexible 1600–6400. Watch your bag — it's crowded."
+      },
+      {
+        "name": "Bosphorus & Maiden's Tower",
+        "nameZh": "博斯普魯斯海峽與少女塔",
+        "tags": ["seascape", "golden hour", "boat"],
+        "recommendedRecipe": "Eterna Cinema Street",
+        "bestTime": "Golden hour from a Bosphorus ferry, or sunrise from Üsküdar shore",
+        "photos": [
+          { "url": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&fit=crop&q=80", "credit": "Osman Köycü" },
+          { "url": "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=800&fit=crop&q=80", "credit": "Meg Jerrard" },
+          { "url": "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&fit=crop&q=80", "credit": "Tolga Ahmetler" }
+        ],
+        "angles": [
+          "From the public ferry (Eminönü–Üsküdar), shoot the old-city skyline with the mosques silhouetted against the setting sun. Stand on the upper deck, stern side.",
+          "Maiden's Tower sits mid-strait — frame it with a passing ferry or fishing boat for scale and a sense of movement.",
+          "At the Galata Bridge, the fishermen's rods make a great repeating foreground element pointing toward the skyline."
+        ],
+        "gear": "Telephoto 50–200mm (75–300 equiv) to compress the skyline from the water. Eterna's muted tones suit hazy, backlit harbour light."
+      }
+    ]
+  }
+]

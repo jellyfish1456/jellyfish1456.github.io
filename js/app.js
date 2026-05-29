@@ -338,12 +338,132 @@ async function init() {
   });
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowLeft') galleryPrev();
-    if (e.key === 'ArrowRight') galleryNext();
+    const spotOpen = document.getElementById('spot-overlay').classList.contains('open');
+    if (e.key === 'Escape') { closeModal(); closeSpotModal(); }
+    if (e.key === 'ArrowLeft') { spotOpen ? spotPrev() : galleryPrev(); }
+    if (e.key === 'ArrowRight') { spotOpen ? spotNext() : galleryNext(); }
   });
 
   document.getElementById('submit-form').addEventListener('submit', handleSubmit);
+
+  document.getElementById('spot-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('spot-overlay')) closeSpotModal();
+  });
+
+  loadDestinations();
+}
+
+/* ───────────── Destinations / Travel ───────────── */
+
+let destinations = [];
+let spotIndex = {};        // flat lookup: "istanbul:0" -> spot object
+let spotGalleryPhotos = [];
+let spotGalleryIndex = 0;
+
+async function loadDestinations() {
+  try {
+    const res = await fetch('./destinations.json');
+    destinations = await res.json();
+  } catch {
+    destinations = [];
+  }
+  renderDestinations();
+}
+
+function renderDestinations() {
+  const container = document.getElementById('destinations-list');
+  if (!destinations.length) {
+    container.innerHTML = `<div class="empty"><div class="empty-icon">🗺️</div><p>No destinations yet.</p></div>`;
+    return;
+  }
+
+  container.innerHTML = destinations.map(dest => {
+    const spotsHtml = dest.spots.map((spot, i) => {
+      const key = `${dest.id}:${i}`;
+      spotIndex[key] = spot;
+      const cover = spot.photos[0];
+      return `
+        <div class="spot-card" onclick="openSpotModal('${key}')">
+          <div class="spot-card-photo">
+            <img src="${cover.url}" alt="${spot.name}" loading="lazy" onerror="this.style.opacity=0.15">
+            ${spot.photos.length > 1 ? `<span class="spot-card-count">📷 ${spot.photos.length}</span>` : ''}
+          </div>
+          <div class="spot-card-body">
+            <div class="spot-card-name">${spot.name}</div>
+            <div class="spot-card-name-zh">${spot.nameZh || ''}</div>
+            <div class="spot-card-recipe">🎞️ ${spot.recommendedRecipe}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="dest-card">
+        <div class="dest-banner" style="background-image:url('${dest.coverPhoto}')">
+          <div class="dest-banner-content">
+            <h3>${dest.flag} ${dest.city} <span class="dest-city-zh">${dest.cityZh}</span></h3>
+            <p class="dest-tagline">${dest.tagline}</p>
+          </div>
+        </div>
+        <div class="dest-meta">📍 <strong>${dest.country} ${dest.countryZh}</strong> &nbsp;·&nbsp; 🗓️ Best season: <strong>${dest.bestSeason}</strong></div>
+        <div class="spots-grid">${spotsHtml}</div>
+      </div>`;
+  }).join('');
+}
+
+function showSpotPhoto(index) {
+  if (!spotGalleryPhotos.length) return;
+  spotGalleryIndex = index;
+  const photo = spotGalleryPhotos[index];
+  document.getElementById('spot-main-photo').src = photo.url;
+  document.getElementById('spot-photo-credit').innerHTML = `Photo by ${photo.credit} on Unsplash`;
+  document.getElementById('spot-counter').textContent = `${index + 1} / ${spotGalleryPhotos.length}`;
+  document.querySelectorAll('#spot-thumbs .gallery-thumb').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+  document.getElementById('spot-prev').style.visibility = index > 0 ? 'visible' : 'hidden';
+  document.getElementById('spot-next').style.visibility = index < spotGalleryPhotos.length - 1 ? 'visible' : 'hidden';
+}
+
+function spotPrev() { if (spotGalleryIndex > 0) showSpotPhoto(spotGalleryIndex - 1); }
+function spotNext() { if (spotGalleryIndex < spotGalleryPhotos.length - 1) showSpotPhoto(spotGalleryIndex + 1); }
+
+function openSpotModal(key) {
+  const spot = spotIndex[key];
+  if (!spot) return;
+
+  spotGalleryPhotos = spot.photos || [];
+  spotGalleryIndex = 0;
+  const thumbsHtml = spotGalleryPhotos.map((p, i) =>
+    `<img class="gallery-thumb ${i === 0 ? 'active' : ''}" src="${p.url}" alt="Example ${i+1}" onclick="showSpotPhoto(${i})">`
+  ).join('');
+  document.getElementById('spot-thumbs').innerHTML = thumbsHtml;
+  showSpotPhoto(0);
+
+  document.getElementById('spot-title').textContent = spot.name;
+  document.getElementById('spot-title-zh').textContent = spot.nameZh || '';
+  document.getElementById('spot-tags').innerHTML =
+    (spot.tags || []).map(t => `<span class="tag">#${t}</span>`).join(' ');
+  document.getElementById('spot-besttime').textContent = spot.bestTime;
+  document.getElementById('spot-recipe').innerHTML = `${spot.recommendedRecipe} <span style="font-size:11px">→ view</span>`;
+  document.getElementById('spot-gear').textContent = spot.gear;
+
+  document.getElementById('spot-angles').innerHTML =
+    spot.angles.map(a => `<li>${a}</li>`).join('');
+
+  // Clicking the recipe box jumps to that recipe
+  const recipeBox = document.getElementById('spot-recipe-box');
+  recipeBox.onclick = () => {
+    const r = recipes.find(x => x.name === spot.recommendedRecipe);
+    if (r) { closeSpotModal(); openModal(r.id); }
+  };
+
+  document.getElementById('spot-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSpotModal() {
+  document.getElementById('spot-overlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 document.addEventListener('DOMContentLoaded', init);
