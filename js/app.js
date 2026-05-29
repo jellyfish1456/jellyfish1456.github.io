@@ -451,7 +451,7 @@ async function analyzeVideo(file, vidEl) {
 }
 
 function estimateFromImage(el, isVideo) {
-  const w = 80, h = 80;
+  const w = 200, h = 200;
   const c = document.createElement('canvas');
   c.width = w; c.height = h;
   const ctx = c.getContext('2d');
@@ -461,37 +461,116 @@ function estimateFromImage(el, isVideo) {
   let data;
   try { data = ctx.getImageData(0, 0, w, h).data; } catch { return { failed: true }; }
 
-  let rT = 0, gT = 0, bT = 0, lumaSum = 0, satSum = 0, n = 0;
-  const lumas = [];
-  for (let i = 0; i < data.length; i += 4) {
+  const N = w * h;
+  let rT = 0, gT = 0, bT = 0, lumaSum = 0, satSum = 0;
+  const hist = new Float64Array(256);     // luma histogram
+  const gray = new Float64Array(N);       // for Laplacian
+  const samples = [];                     // RGB samples for k-means palette
+  for (let p = 0, i = 0; p < N; p++, i += 4) {
     const r = data[i], g = data[i + 1], b = data[i + 2];
     rT += r; gT += g; bT += b;
     const luma = 0.299 * r + 0.587 * g + 0.114 * b;
-    lumaSum += luma; lumas.push(luma);
+    lumaSum += luma;
+    gray[p] = luma;
+    hist[Math.round(luma)]++;
     const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
     satSum += mx === 0 ? 0 : (mx - mn) / mx;
-    n++;
+    if (p % 13 === 0) samples.push([r, g, b]);  // ~3000 samples
   }
-  const avgR = rT / n, avgG = gT / n, avgB = bT / n;
-  const avgLuma = lumaSum / n;
-  const avgSat = satSum / n;
-  const variance = lumas.reduce((a, l) => a + (l - avgLuma) ** 2, 0) / n;
-  const contrast = Math.sqrt(variance);
+  const avgR = rT / N, avgG = gT / N, avgB = bT / N;
+  const avgLuma = lumaSum / N;
+  const avgSat = satSum / N;
 
-  // crude colour-temperature tendency from R:B ratio
+  // ---- Histogram-based exposure / dynamic range / contrast ----
+  const pct = q => { let acc = 0, target = q * N; for (let k = 0; k < 256; k++) { acc += hist[k]; if (acc >= target) return k; } return 255; };
+  const p1 = pct(0.01), p5 = pct(0.05), p50 = pct(0.5), p95 = pct(0.95), p99 = pct(0.99);
+  const shadowClip = (hist.slice(0, 4).reduce((a, x) => a + x, 0) / N) * 100;   // % near-black
+  const highClip = (hist.slice(252).reduce((a, x) => a + x, 0) / N) * 100;       // % near-white
+  const dynamicRange = p95 - p5;                                                 // 0..255 spread
+  let varSum = 0; for (let p = 0; p < N; p++) varSum += (gray[p] - avgLuma) ** 2;
+  const contrast = Math.sqrt(varSum / N);
+
+  // ---- Gray-World white-balance → Kelvin estimate + suggested shift ----
   const rb = avgR / (avgB || 1);
-  let wbWord, kelvin;
-  if (rb > 1.25) { wbWord = 'Warm'; kelvin = '≈ 3000–4000K (tungsten / sunset)'; }
-  else if (rb > 1.08) { wbWord = 'Slightly warm'; kelvin = '≈ 4500–5500K (daylight)'; }
-  else if (rb > 0.92) { wbWord = 'Neutral'; kelvin = '≈ 5500–6500K (daylight)'; }
-  else if (rb > 0.8) { wbWord = 'Slightly cool'; kelvin = '≈ 6500–7500K (shade / cloudy)'; }
-  else { wbWord = 'Cool'; kelvin = '≈ 7500K+ (deep shade / blue hour)'; }
+  // map R:B ratio to an approximate colour temperature (empirical)
+  let kelvinNum;
+  if (rb >= 1.4) kelvinNum = 3000;
+  else if (rb >= 1.25) kelvinNum = 3500;
+  else if (rb >= 1.15) kelvinNum = 4300;
+  else if (rb >= 1.06) kelvinNum = 5200;
+  else if (rb >= 0.96) kelvinNum = 5800;
+  else if (rb >= 0.88) kelvinNum = 6800;
+  else if (rb >= 0.8) kelvinNum = 8000;
+  else kelvinNum = 10000;
+  const wbWord = rb > 1.18 ? 'Warm' : rb > 1.05 ? 'Slightly warm' : rb > 0.95 ? 'Neutral' : rb > 0.85 ? 'Slightly cool' : 'Cool';
+  const kelvin = `≈ ${kelvinNum}K`;
+  // green/magenta tint from G vs (R+B)/2
+  const gm = avgG - (avgR + avgB) / 2;
+  const tint = gm > 6 ? 'green cast' : gm < -6 ? 'magenta cast' : 'neutral tint';
+  // suggested WB shift to neutralise (Fuji-style R/B shift, ~ each step ≈ small)
+  const shiftR = Math.max(-9, Math.min(9, Math.round((1 - rb) * 9)));
+  const shiftB = -shiftR;
 
-  const expWord = avgLuma > 175 ? 'Bright / high-key' : avgLuma > 110 ? 'Normal' : avgLuma > 60 ? 'Low / moody' : 'Dark / low-key';
-  const contrastWord = contrast > 70 ? 'High' : contrast > 45 ? 'Medium' : 'Low / flat';
+  // ---- Laplacian variance → sharpness / softness ----
+  let lapSum = 0, lapSq = 0, lapN = 0;
+  for (let y = 1; y < h - 1; y++) {
+    for (let x = 1; x < w - 1; x++) {
+      const p = y * w + x;
+      const lap = 4 * gray[p] - gray[p - 1] - gray[p + 1] - gray[p - w] - gray[p + w];
+      lapSum += lap; lapSq += lap * lap; lapN++;
+    }
+  }
+  const lapVar = lapSq / lapN - (lapSum / lapN) ** 2;
+
+  // ---- dominant colour palette (mini k-means) ----
+  const palette = kMeansPalette(samples, 5, 8);
+
+  // ---- words ----
+  const expWord = p50 > 175 ? 'Bright / high-key' : p50 > 120 ? 'Normal' : p50 > 70 ? 'Low / moody' : 'Dark / low-key';
+  let expDetail = [];
+  if (highClip > 3) expDetail.push(`${highClip.toFixed(0)}% blown highlights`);
+  if (shadowClip > 5) expDetail.push(`${shadowClip.toFixed(0)}% crushed shadows`);
+  const contrastWord = (dynamicRange > 200 || contrast > 70) ? 'High' : (dynamicRange > 140 || contrast > 45) ? 'Medium' : 'Low / flat';
+  const drWord = dynamicRange > 210 ? 'Wide' : dynamicRange > 150 ? 'Medium' : 'Narrow';
   const satWord = avgSat < 0.08 ? 'Monochrome / desaturated' : avgSat < 0.22 ? 'Muted' : avgSat < 0.4 ? 'Natural' : 'Vivid / saturated';
+  const sharpWord = lapVar > 900 ? 'Crisp / lots of detail' : lapVar > 300 ? 'Normal' : 'Soft / shallow DOF or slight blur';
 
-  return { avgLuma, avgSat, contrast, rb, wbWord, kelvin, expWord, contrastWord, satWord };
+  return {
+    avgLuma, avgSat, contrast, rb, wbWord, kelvin, kelvinNum, tint,
+    shiftR, shiftB, expWord, expDetail, contrastWord, drWord, dynamicRange,
+    satWord, sharpWord, lapVar, highClip, shadowClip, p5, p50, p95, palette,
+  };
+}
+
+// tiny k-means for a dominant-colour palette
+function kMeansPalette(samples, k, iters) {
+  if (!samples.length) return [];
+  // init centroids from spread-out samples
+  let cents = [];
+  for (let i = 0; i < k; i++) cents.push(samples[Math.floor(i * samples.length / k)].slice());
+  const assign = new Int32Array(samples.length);
+  for (let it = 0; it < iters; it++) {
+    for (let s = 0; s < samples.length; s++) {
+      let best = 0, bd = Infinity;
+      for (let cI = 0; cI < k; cI++) {
+        const dr = samples[s][0] - cents[cI][0], dg = samples[s][1] - cents[cI][1], db = samples[s][2] - cents[cI][2];
+        const d = dr * dr + dg * dg + db * db;
+        if (d < bd) { bd = d; best = cI; }
+      }
+      assign[s] = best;
+    }
+    const sum = Array.from({ length: k }, () => [0, 0, 0, 0]);
+    for (let s = 0; s < samples.length; s++) {
+      const a = assign[s];
+      sum[a][0] += samples[s][0]; sum[a][1] += samples[s][1]; sum[a][2] += samples[s][2]; sum[a][3]++;
+    }
+    for (let cI = 0; cI < k; cI++) if (sum[cI][3]) cents[cI] = [sum[cI][0] / sum[cI][3], sum[cI][1] / sum[cI][3], sum[cI][2] / sum[cI][3]];
+  }
+  const counts = new Array(k).fill(0);
+  for (let s = 0; s < samples.length; s++) counts[assign[s]]++;
+  return cents
+    .map((c, i) => ({ rgb: c.map(Math.round), pct: counts[i] / samples.length }))
+    .sort((a, b) => b.pct - a.pct);
 }
 
 function box(label, value, icon, estimated) {
@@ -563,20 +642,39 @@ function renderEstimate(est, exif) {
     ? '≈ Estimated from a video frame — no EXIF in video'
     : '≈ Estimated from pixels — no EXIF found in this file';
 
+  const wbVal = `${est.wbWord} <small>${est.kelvin}${est.tint !== 'neutral tint' ? ', ' + est.tint : ''}</small>`;
+  const wbShift = (est.shiftR > 0 ? `R+${est.shiftR} B${est.shiftB}` : est.shiftR < 0 ? `R${est.shiftR} B+${Math.abs(est.shiftB)}` : 'no shift');
+  const expVal = est.expWord + (est.expDetail.length ? ` <small>${est.expDetail.join(', ')}</small>` : '');
+
   let html = '';
-  html += box('White Balance', est.wbWord + ` <small>${est.kelvin}</small>`, '🎨', true);
-  html += box('Exposure', est.expWord, '💡', true);
+  html += box('White Balance', wbVal, '🎨', true);
+  html += box('To neutralise', `<small>shift ${wbShift}</small>`, '⚖️', true);
+  html += box('Exposure', expVal, '💡', true);
+  html += box('Dynamic Range', `${est.drWord} <small>(${est.dynamicRange}/255)</small>`, '📈', true);
   html += box('Contrast', est.contrastWord, '◐', true);
   html += box('Saturation', est.satWord, '🌈', true);
+  html += box('Sharpness', est.sharpWord, '🔍', true);
   html += box('Aperture', '— <small>not recoverable</small>', '🔘');
   html += box('Shutter', '— <small>not recoverable</small>', '⏱️');
   html += box('ISO', '— <small>not recoverable</small>', '📊');
   document.getElementById('param-grid').innerHTML = html;
 
+  // dominant colour palette
+  if (est.palette && est.palette.length) {
+    const sw = est.palette.map(p =>
+      `<div class="swatch" title="${p.pct > 0 ? (p.pct * 100).toFixed(0) + '%' : ''}" style="background:rgb(${p.rgb[0]},${p.rgb[1]},${p.rgb[2]});flex:${Math.max(0.6, p.pct * 5)}"></div>`
+    ).join('');
+    const wrap = `<div class="param-box" style="grid-column:1/-1">
+        <div class="param-label">🎨 Dominant colours</div>
+        <div class="palette-row">${sw}</div>
+      </div>`;
+    document.getElementById('param-grid').insertAdjacentHTML('beforeend', wrap);
+  }
+
   suggestRecipeFromEstimate(est);
 
   document.getElementById('expert-note').innerHTML =
-    '⚠️ This file has no EXIF metadata (common for screenshots, social-media downloads, and all videos). Aperture, shutter and ISO are <strong>physically not recoverable</strong> — that information was never stored in the pixels. The values above are rough estimates from the image colours and brightness only.';
+    '⚠️ No EXIF in this file (common for screenshots, social downloads and all videos). Aperture / shutter / ISO are <strong>physically not recoverable</strong>. Everything above is computed in your browser by real image-analysis algorithms — Gray-World white balance, a luma histogram (exposure &amp; dynamic range), Laplacian variance (sharpness) and k-means (dominant colours) — nothing is uploaded.';
 }
 
 function showRecipeSuggest(name, why) {

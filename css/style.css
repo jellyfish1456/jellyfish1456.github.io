@@ -967,6 +967,17 @@ header {
 .param-value.estimated { color: var(--accent); }
 .param-value small { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
+.palette-row {
+  display: flex;
+  gap: 0;
+  height: 38px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+}
+.palette-row .swatch { height: 100%; }
+
 .expert-recipe-suggest {
   margin-top: 18px;
   padding: 16px;
