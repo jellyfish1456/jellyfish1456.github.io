@@ -413,12 +413,103 @@ header {
   box-shadow: 0 24px 80px rgba(30,24,18,0.2);
 }
 
-.modal-photo {
+/* ── Gallery ── */
+.modal-gallery {
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.gallery-main {
+  position: relative;
   width: 100%;
-  height: 280px;
+  aspect-ratio: 3/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-main-photo {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 16px 16px 0 0;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.15s;
+  z-index: 2;
+}
+
+.gallery-arrow:hover { background: #fff; }
+.gallery-arrow-left { left: 12px; }
+.gallery-arrow-right { right: 12px; }
+
+.gallery-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-family: var(--mono);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 4px;
+  padding: 6px 8px;
+  overflow-x: auto;
+  background: #111;
+}
+
+.gallery-thumb {
+  width: 64px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.gallery-thumb:hover { opacity: 0.8; }
+.gallery-thumb.active { opacity: 1; border-color: var(--accent); }
+
+/* Card photo badge */
+.card-photo-wrap {
+  position: relative;
+}
+
+.card-photo-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-family: var(--mono);
 }
 
 .modal-film-bar {

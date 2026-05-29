@@ -54,8 +54,12 @@ function buildToneBar(label, value) {
 function buildCard(recipe) {
   const s = recipe.settings;
   const fc = getFilmColor(s.filmSimulation);
-  const photoHtml = recipe.photo
-    ? `<img class="card-photo" src="${recipe.photo.url}" alt="${recipe.name}" loading="lazy">`
+  const cover = recipe.photos && recipe.photos.length > 0 ? recipe.photos[0] : null;
+  const photoHtml = cover
+    ? `<div class="card-photo-wrap">
+        <img class="card-photo" src="${cover.url}" alt="${recipe.name}" loading="lazy">
+        ${recipe.photos.length > 1 ? `<span class="card-photo-count">📷 ${recipe.photos.length}</span>` : ''}
+      </div>`
     : '';
   return `
     <div class="card" onclick="openModal(${recipe.id})">
@@ -90,22 +94,58 @@ function buildCard(recipe) {
     </div>`;
 }
 
+let currentGalleryIndex = 0;
+let currentGalleryPhotos = [];
+
+function showGalleryPhoto(index) {
+  if (!currentGalleryPhotos.length) return;
+  currentGalleryIndex = index;
+  const photo = currentGalleryPhotos[index];
+  document.getElementById('modal-main-photo').src = photo.url;
+  document.getElementById('modal-photo-credit').innerHTML =
+    `Photo by ${photo.credit} on Unsplash`;
+  document.getElementById('gallery-counter').textContent =
+    `${index + 1} / ${currentGalleryPhotos.length}`;
+
+  // Update thumbnails active state
+  document.querySelectorAll('.gallery-thumb').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+
+  // Show/hide arrows
+  document.getElementById('gallery-prev').style.visibility = index > 0 ? 'visible' : 'hidden';
+  document.getElementById('gallery-next').style.visibility = index < currentGalleryPhotos.length - 1 ? 'visible' : 'hidden';
+}
+
+function galleryPrev() { if (currentGalleryIndex > 0) showGalleryPhoto(currentGalleryIndex - 1); }
+function galleryNext() { if (currentGalleryIndex < currentGalleryPhotos.length - 1) showGalleryPhoto(currentGalleryIndex + 1); }
+
 function openModal(id) {
   const recipe = recipes.find(r => r.id === id);
   if (!recipe) return;
   const s = recipe.settings;
   const fc = getFilmColor(s.filmSimulation);
 
-  const modalPhoto = document.getElementById('modal-photo');
-  if (recipe.photo) {
-    modalPhoto.src = recipe.photo.url;
-    modalPhoto.alt = recipe.name;
-    modalPhoto.style.display = 'block';
+  // Build gallery
+  const galleryEl = document.getElementById('modal-gallery');
+  currentGalleryPhotos = recipe.photos || [];
+  if (currentGalleryPhotos.length > 0) {
+    galleryEl.style.display = 'block';
+    document.getElementById('modal-main-photo').src = currentGalleryPhotos[0].url;
+    document.getElementById('modal-main-photo').alt = recipe.name;
+
+    const thumbsHtml = currentGalleryPhotos.map((p, i) =>
+      `<img class="gallery-thumb ${i === 0 ? 'active' : ''}" src="${p.url}" alt="Example ${i+1}" onclick="showGalleryPhoto(${i})">`
+    ).join('');
+    document.getElementById('gallery-thumbs').innerHTML = thumbsHtml;
+    document.getElementById('gallery-counter').textContent = `1 / ${currentGalleryPhotos.length}`;
+    document.getElementById('gallery-prev').style.visibility = 'hidden';
+    document.getElementById('gallery-next').style.visibility = currentGalleryPhotos.length > 1 ? 'visible' : 'hidden';
     document.getElementById('modal-photo-credit').innerHTML =
-      `Photo by <a href="${recipe.photo.creditUrl}" target="_blank">${recipe.photo.credit}</a> on Unsplash`;
+      `Photo by ${currentGalleryPhotos[0].credit} on Unsplash`;
+    currentGalleryIndex = 0;
   } else {
-    modalPhoto.style.display = 'none';
-    document.getElementById('modal-photo-credit').innerHTML = '';
+    galleryEl.style.display = 'none';
   }
 
   document.getElementById('modal-film-bar').style.background = fc.bar;
@@ -299,6 +339,8 @@ async function init() {
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') galleryPrev();
+    if (e.key === 'ArrowRight') galleryNext();
   });
 
   document.getElementById('submit-form').addEventListener('submit', handleSubmit);

@@ -8,11 +8,12 @@
     "camera": "X-T30",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2019/10/24/my-fujifilm-x-t30-kodachrome-64-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80",
-      "credit": "Pedro Lastra",
-      "creditUrl": "https://unsplash.com/@peterlaster"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80", "credit": "Pedro Lastra" },
+      { "url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&fit=crop&q=80", "credit": "Anders Jildén" },
+      { "url": "https://images.unsplash.com/photo-1476093095287-500b316895ed?w=800&fit=crop&q=80", "credit": "Luca Bravo" },
+      { "url": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&fit=crop&q=80", "credit": "Jens Lelie" }
+    ],
     "settings": {
       "filmSimulation": "Classic Chrome",
       "dynamicRange": "DR200",
@@ -40,11 +41,12 @@
     "camera": "X-T3",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/01/09/fujifilm-x-t3-fujicolor-200-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&fit=crop&q=80",
-      "credit": "Ethan Haddox",
-      "creditUrl": "https://unsplash.com/@ethanh"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&fit=crop&q=80", "credit": "Ethan Haddox" },
+      { "url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&fit=crop&q=80", "credit": "Albert Dera" },
+      { "url": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&fit=crop&q=80", "credit": "Brooke Cagle" },
+      { "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&fit=crop&q=80", "credit": "Aiony Haust" }
+    ],
     "settings": {
       "filmSimulation": "Provia/Standard",
       "dynamicRange": "DR200",
@@ -72,11 +74,12 @@
     "camera": "X100V",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/07/09/fujifilm-x100v-ilford-hp5-plus-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&fit=crop&q=80",
-      "credit": "Tim Trad",
-      "creditUrl": "https://unsplash.com/@timtrad"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&fit=crop&q=80", "credit": "Tim Trad" },
+      { "url": "https://images.unsplash.com/photo-1432405972618-c6b0227ce49b?w=800&fit=crop&q=80", "credit": "Anouk Fotografeert" },
+      { "url": "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&fit=crop&q=80", "credit": "Willian Justen" },
+      { "url": "https://images.unsplash.com/photo-1471039497385-b6d6ba609f9c?w=800&fit=crop&q=80", "credit": "Patrick Tomasso" }
+    ],
     "settings": {
       "filmSimulation": "Acros",
       "dynamicRange": "DR400",
@@ -104,11 +107,12 @@
     "camera": "X-T4",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2021/03/18/fujifilm-x-t4-velvia-landscape-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&fit=crop&q=80",
-      "credit": "Samuel Ferrara",
-      "creditUrl": "https://unsplash.com/@samferrara"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&fit=crop&q=80", "credit": "Samuel Ferrara" },
+      { "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&fit=crop&q=80", "credit": "v2osk" },
+      { "url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&fit=crop&q=80", "credit": "Robert Lukeman" },
+      { "url": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&fit=crop&q=80", "credit": "Luca Bravo" }
+    ],
     "settings": {
       "filmSimulation": "Velvia/Vivid",
       "dynamicRange": "DR400",
@@ -136,11 +140,12 @@
     "camera": "X-Pro3",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/03/26/fujifilm-x-pro3-eterna-cinema-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&fit=crop&q=80",
-      "credit": "Pedro Lastra",
-      "creditUrl": "https://unsplash.com/@peterlaster"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&fit=crop&q=80", "credit": "Pedro Lastra" },
+      { "url": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&fit=crop&q=80", "credit": "Joshua Rawson-Harris" },
+      { "url": "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&fit=crop&q=80", "credit": "Jack Finnigan" },
+      { "url": "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&fit=crop&q=80", "credit": "Yeshi Kangrang" }
+    ],
     "settings": {
       "filmSimulation": "Eterna Cinema",
       "dynamicRange": "DR400",
@@ -168,11 +173,12 @@
     "camera": "X-E4",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2021/01/28/fujifilm-x-e4-classic-neg-film-simulation-recipe/",
-    "photo": {
-      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80",
-      "credit": "Sean Oulashin",
-      "creditUrl": "https://unsplash.com/@oulashin"
-    },
+    "photos": [
+      { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80", "credit": "Sean Oulashin" },
+      { "url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&fit=crop&q=80", "credit": "Vidar Nordli-Mathisen" },
+      { "url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&fit=crop&q=80", "credit": "Simon Berger" },
+      { "url": "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&fit=crop&q=80", "credit": "Jean Gerber" }
+    ],
     "settings": {
       "filmSimulation": "Classic Neg.",
       "dynamicRange": "DR400",
