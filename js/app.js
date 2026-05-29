@@ -393,6 +393,12 @@ async function analyzeFile(file) {
   document.getElementById('expert-result').style.display = 'grid';
   document.getElementById('expert-filename').textContent = file.name;
   document.getElementById('expert-recipe-suggest').style.display = 'none';
+  // reset scene-AI panel for the new file
+  document.getElementById('scene-result').style.display = 'none';
+  const sbtn = document.getElementById('scene-btn');
+  sbtn.style.display = 'inline-block';
+  sbtn.disabled = false;
+  sbtn.textContent = '🧠 Detect scene with on-device AI';
 
   const img = document.getElementById('expert-preview-img');
   const vid = document.getElementById('expert-preview-vid');
@@ -404,11 +410,109 @@ async function analyzeFile(file) {
 
   if (isVideo) {
     vid.src = url; vid.style.display = 'block';
+    window.__expertMedia = { type: 'video', el: vid };
     await analyzeVideo(file, vid);
   } else {
     img.src = url; img.style.display = 'block';
+    window.__expertMedia = { type: 'image', el: img };
     await analyzeImage(file, img);
   }
+}
+
+/* ── On-device CLIP scene detection (transformers.js, no API) ── */
+
+let __sceneClassifier = null;
+
+function currentMediaForCLIP() {
+  const m = window.__expertMedia;
+  if (!m) return null;
+  if (m.type === 'image') return m.el.src;
+  // video → grab the current frame as a data URL
+  const v = m.el, c = document.createElement('canvas');
+  c.width = v.videoWidth || 512; c.height = v.videoHeight || 512;
+  c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', 0.9);
+}
+
+async function detectScene() {
+  const btn = document.getElementById('scene-btn');
+  const resEl = document.getElementById('scene-result');
+  const imgSrc = currentMediaForCLIP();
+  if (!imgSrc) return;
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Loading model…';
+  try {
+    const mod = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1');
+    mod.env.allowLocalModels = false;
+    if (!__sceneClassifier) {
+      __sceneClassifier = await mod.pipeline('zero-shot-image-classification', 'Xenova/clip-vit-base-patch32', {
+        progress_callback: p => {
+          if (p.status === 'progress' && p.progress != null)
+            btn.textContent = `⏳ Downloading model… ${Math.round(p.progress)}%`;
+        },
+      });
+    }
+    btn.textContent = '🔎 Analyzing…';
+
+    const scenes = [
+      'a portrait of a person', 'a landscape', 'a street photography scene',
+      'architecture or a building', 'food', 'a night scene', 'a seascape or the ocean',
+      'a forest or nature', 'a city skyline', 'an indoor interior',
+      'a close-up macro shot', 'an animal or pet',
+    ];
+    const lights = [
+      'golden hour sunset light', 'blue hour twilight', 'bright daylight',
+      'overcast cloudy light', 'night or artificial light', 'strong backlight',
+    ];
+
+    const [sceneOut, lightOut] = await Promise.all([
+      __sceneClassifier(imgSrc, scenes),
+      __sceneClassifier(imgSrc, lights),
+    ]);
+
+    renderScene(sceneOut, lightOut);
+    btn.style.display = 'none';
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = '🧠 Detect scene with on-device AI';
+    resEl.style.display = 'block';
+    resEl.innerHTML = `<div class="scene-err">Couldn't load the on-device model (needs a network connection the first time, and a browser that supports WebAssembly). ${(err && err.message) ? '<br><small>' + err.message + '</small>' : ''}</div>`;
+  }
+}
+
+const clean = l => l.replace(/^(a |an |the )/, '');
+
+function renderScene(sceneOut, lightOut) {
+  const resEl = document.getElementById('scene-result');
+  resEl.style.display = 'block';
+  const topScene = sceneOut[0], topLight = lightOut[0];
+
+  const chips = sceneOut.slice(0, 3).map((s, i) =>
+    `<span class="scene-chip ${i === 0 ? 'top' : ''}">${clean(s.label)} <b>${Math.round(s.score * 100)}%</b></span>`
+  ).join('');
+
+  resEl.innerHTML = `
+    <div class="scene-title">🧠 On-device AI · scene reading</div>
+    <div class="scene-line"><span class="scene-k">Scene</span>${chips}</div>
+    <div class="scene-line"><span class="scene-k">Light</span>
+      <span class="scene-chip top">${clean(topLight.label)} <b>${Math.round(topLight.score * 100)}%</b></span></div>
+    <div class="scene-foot">Open-source CLIP model, run locally — nothing uploaded.</div>`;
+
+  refineSuggestionFromScene(topScene.label, topLight.label);
+}
+
+function refineSuggestionFromScene(scene, light) {
+  const s = scene.toLowerCase(), l = light.toLowerCase();
+  let name, why;
+  if (s.includes('night') || l.includes('night') || l.includes('blue hour')) { name = 'Eterna Cinema Street'; why = `AI read this as ${clean(scene)}`; }
+  else if (s.includes('landscape') || s.includes('forest') || s.includes('seascape') || s.includes('skyline')) { name = 'Velvia Landscape'; why = `AI read this as ${clean(scene)}`; }
+  else if (s.includes('street') || s.includes('architecture')) { name = 'Classic Negative Street'; why = `AI read this as ${clean(scene)}`; }
+  else if (s.includes('portrait') || s.includes('food') || s.includes('interior') || s.includes('close-up')) {
+    name = l.includes('golden') ? 'Kodachrome 64' : 'Fujicolor 200';
+    why = `AI read this as ${clean(scene)}${l.includes('golden') ? ' in golden light' : ''}`;
+  } else { name = 'Fujicolor 200'; why = `AI read this as ${clean(scene)}`; }
+  showRecipeSuggest(name, why);
 }
 
 async function analyzeImage(file, imgEl) {

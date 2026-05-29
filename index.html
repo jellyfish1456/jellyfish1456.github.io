@@ -110,6 +110,13 @@
             <div class="expert-source-badge" id="expert-source-badge"></div>
             <div class="param-grid" id="param-grid"></div>
             <div class="expert-recipe-suggest" id="expert-recipe-suggest" style="display:none"></div>
+
+            <div class="scene-ai" id="scene-ai">
+              <button class="scene-btn" id="scene-btn" onclick="detectScene()">🧠 Detect scene with on-device AI</button>
+              <div class="scene-hint">Runs a small open-source vision model (CLIP) entirely in your browser. First run downloads it once (~30 MB); your image never leaves your device.</div>
+              <div class="scene-result" id="scene-result" style="display:none"></div>
+            </div>
+
             <div class="expert-note" id="expert-note"></div>
           </div>
         </div>
