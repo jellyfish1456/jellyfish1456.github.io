@@ -76,6 +76,23 @@ header {
   margin-left: auto;
 }
 
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+  line-height: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle:hover { border-color: var(--accent); }
+
 .nav-btn {
   padding: 6px 14px;
   border-radius: 6px;
@@ -1280,4 +1297,67 @@ footer a { color: var(--accent); }
   .tone-sliders { grid-template-columns: 1fr 1fr; }
   .hero-stats { gap: 20px; }
   .modal-photo { height: 200px; }
+}
+
+/* ── Mobile header drawer + touch/layout polish ── */
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+
+  .header-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 10px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 24px var(--shadow);
+  }
+  header.nav-open .header-nav { display: flex; }
+
+  .header-nav .nav-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    font-size: 15px;
+    border-color: transparent;
+  }
+  .header-nav .nav-btn:hover { background: var(--surface2); }
+
+  .header-inner { padding: 0 16px; gap: 12px; }
+  .logo { font-size: 16px; }
+
+  .main { padding: 24px 16px; }
+  .hero { padding: 44px 18px; }
+  .hero p { font-size: 15px; }
+
+  /* one-column content grids */
+  .spots-grid { grid-template-columns: 1fr; padding: 16px; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .dest-banner { height: 170px; }
+  .dest-banner-content { padding: 18px; }
+  .dest-meta { padding: 12px 16px; }
+
+  /* modals fill the screen comfortably */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-height: 94vh; border-radius: 16px 16px 0 0; }
+  .modal-body { padding: 20px; }
+  .submit-section, .settings-info-section, .expert-card { padding: 20px 16px; }
+
+  /* bigger touch targets */
+  .chip, .nav-btn, .filter-chips .chip { min-height: 38px; display: inline-flex; align-items: center; }
+  .gallery-arrow { width: 42px; height: 42px; }
+
+  .section-heading h2 { font-size: 22px; }
+  .param-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 380px) {
+  .param-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .tone-sliders { grid-template-columns: 1fr 1fr; }
 }

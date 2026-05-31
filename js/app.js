@@ -352,6 +352,22 @@ async function init() {
 
   loadDestinations();
   initExpert();
+
+  // Mobile nav: close the drawer after tapping any item
+  const navEl = document.getElementById('header-nav');
+  if (navEl) navEl.addEventListener('click', e => {
+    if (e.target.closest('.nav-btn')) closeNav();
+  });
+}
+
+function toggleNav() {
+  const h = document.querySelector('header');
+  const open = h.classList.toggle('nav-open');
+  document.getElementById('nav-toggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function closeNav() {
+  document.querySelector('header').classList.remove('nav-open');
+  document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
 }
 
 /* ───────────── Parameter Expert ───────────── */
