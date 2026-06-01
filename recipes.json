@@ -4,15 +4,31 @@
     "name": "Kodachrome 64",
     "author": "Ritchie Roesch",
     "description": "Mimics the classic Kodachrome 64 slide film — warm shadows, slightly muted color, and fine grain. Great for travel and street.",
-    "tags": ["street", "travel", "vintage"],
+    "tags": [
+      "street",
+      "travel",
+      "vintage"
+    ],
     "camera": "X-T30",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2019/10/24/my-fujifilm-x-t30-kodachrome-64-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80", "credit": "Pedro Lastra" },
-      { "url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&fit=crop&q=80", "credit": "Anders Jildén" },
-      { "url": "https://images.unsplash.com/photo-1476093095287-500b316895ed?w=800&fit=crop&q=80", "credit": "Luca Bravo" },
-      { "url": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&fit=crop&q=80", "credit": "Jens Lelie" }
+      {
+        "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&fit=crop&q=80",
+        "credit": "Pedro Lastra"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&fit=crop&q=80",
+        "credit": "Anders Jildén"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1476093095287-500b316895ed?w=800&fit=crop&q=80",
+        "credit": "Luca Bravo"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&fit=crop&q=80",
+        "credit": "Jens Lelie"
+      }
     ],
     "settings": {
       "filmSimulation": "Classic Chrome",
@@ -37,15 +53,31 @@
     "name": "Fujicolor 200",
     "author": "Ritchie Roesch",
     "description": "Replicates the affordable Fujicolor 200 print film — punchy color, slightly warm, with clean midtones. Ideal for everyday and portraits.",
-    "tags": ["portrait", "everyday", "warm"],
+    "tags": [
+      "portrait",
+      "everyday",
+      "warm"
+    ],
     "camera": "X-T3",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/01/09/fujifilm-x-t3-fujicolor-200-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&fit=crop&q=80", "credit": "Ethan Haddox" },
-      { "url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&fit=crop&q=80", "credit": "Albert Dera" },
-      { "url": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&fit=crop&q=80", "credit": "Brooke Cagle" },
-      { "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&fit=crop&q=80", "credit": "Aiony Haust" }
+      {
+        "url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&fit=crop&q=80",
+        "credit": "Ethan Haddox"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&fit=crop&q=80",
+        "credit": "Albert Dera"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&fit=crop&q=80",
+        "credit": "Brooke Cagle"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&fit=crop&q=80",
+        "credit": "Aiony Haust"
+      }
     ],
     "settings": {
       "filmSimulation": "Provia/Standard",
@@ -70,15 +102,31 @@
     "name": "Ilford HP5 Plus",
     "author": "Ritchie Roesch",
     "description": "Faithful recreation of the beloved Ilford HP5 Plus black and white film. High contrast with natural grain — a timeless street look.",
-    "tags": ["monochrome", "street", "film"],
+    "tags": [
+      "monochrome",
+      "street",
+      "film"
+    ],
     "camera": "X100V",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/07/09/fujifilm-x100v-ilford-hp5-plus-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&fit=crop&q=80", "credit": "Tim Trad" },
-      { "url": "https://images.unsplash.com/photo-1432405972618-c6b0227ce49b?w=800&fit=crop&q=80", "credit": "Anouk Fotografeert" },
-      { "url": "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&fit=crop&q=80", "credit": "Willian Justen" },
-      { "url": "https://images.unsplash.com/photo-1471039497385-b6d6ba609f9c?w=800&fit=crop&q=80", "credit": "Patrick Tomasso" }
+      {
+        "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&fit=crop&q=80",
+        "credit": "Tim Trad"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1432405972618-c6b0227ce49b?w=800&fit=crop&q=80",
+        "credit": "Anouk Fotografeert"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&fit=crop&q=80",
+        "credit": "Willian Justen"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1471039497385-b6d6ba609f9c?w=800&fit=crop&q=80",
+        "credit": "Patrick Tomasso"
+      }
     ],
     "settings": {
       "filmSimulation": "Acros",
@@ -103,15 +151,31 @@
     "name": "Velvia Landscape",
     "author": "Ritchie Roesch",
     "description": "Maximizes Velvia's famous saturation and contrast for bold landscape images — makes greens pop and skies deep blue.",
-    "tags": ["landscape", "nature", "vivid"],
+    "tags": [
+      "landscape",
+      "nature",
+      "vivid"
+    ],
     "camera": "X-T4",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2021/03/18/fujifilm-x-t4-velvia-landscape-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&fit=crop&q=80", "credit": "Samuel Ferrara" },
-      { "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&fit=crop&q=80", "credit": "v2osk" },
-      { "url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&fit=crop&q=80", "credit": "Robert Lukeman" },
-      { "url": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&fit=crop&q=80", "credit": "Luca Bravo" }
+      {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&fit=crop&q=80",
+        "credit": "Samuel Ferrara"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&fit=crop&q=80",
+        "credit": "v2osk"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&fit=crop&q=80",
+        "credit": "Robert Lukeman"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&fit=crop&q=80",
+        "credit": "Luca Bravo"
+      }
     ],
     "settings": {
       "filmSimulation": "Velvia/Vivid",
@@ -136,15 +200,31 @@
     "name": "Eterna Cinema Street",
     "author": "Ritchie Roesch",
     "description": "Uses Eterna Cinema for a desaturated, cinematic look with lifted shadows — popular for moody urban and documentary work.",
-    "tags": ["cinematic", "urban", "moody"],
+    "tags": [
+      "cinematic",
+      "urban",
+      "moody"
+    ],
     "camera": "X-Pro3",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2020/03/26/fujifilm-x-pro3-eterna-cinema-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&fit=crop&q=80", "credit": "Pedro Lastra" },
-      { "url": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&fit=crop&q=80", "credit": "Joshua Rawson-Harris" },
-      { "url": "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&fit=crop&q=80", "credit": "Jack Finnigan" },
-      { "url": "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&fit=crop&q=80", "credit": "Yeshi Kangrang" }
+      {
+        "url": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&fit=crop&q=80",
+        "credit": "Pedro Lastra"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&fit=crop&q=80",
+        "credit": "Joshua Rawson-Harris"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&fit=crop&q=80",
+        "credit": "Jack Finnigan"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&fit=crop&q=80",
+        "credit": "Yeshi Kangrang"
+      }
     ],
     "settings": {
       "filmSimulation": "Eterna Cinema",
@@ -169,15 +249,31 @@
     "name": "Classic Negative Street",
     "author": "Ritchie Roesch",
     "description": "Takes advantage of Classic Neg's unique color rendering — faded highlights, rich shadows, and a punchy-yet-vintage character perfect for street.",
-    "tags": ["street", "classic neg", "vintage"],
+    "tags": [
+      "street",
+      "classic neg",
+      "vintage"
+    ],
     "camera": "X-E4",
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2021/01/28/fujifilm-x-e4-classic-neg-film-simulation-recipe/",
     "photos": [
-      { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80", "credit": "Sean Oulashin" },
-      { "url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&fit=crop&q=80", "credit": "Vidar Nordli-Mathisen" },
-      { "url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&fit=crop&q=80", "credit": "Simon Berger" },
-      { "url": "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&fit=crop&q=80", "credit": "Jean Gerber" }
+      {
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80",
+        "credit": "Sean Oulashin"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=800&fit=crop&q=80",
+        "credit": "Vidar Nordli-Mathisen"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&fit=crop&q=80",
+        "credit": "Simon Berger"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&fit=crop&q=80",
+        "credit": "Jean Gerber"
+      }
     ],
     "settings": {
       "filmSimulation": "Classic Neg.",
@@ -196,5 +292,355 @@
       "iso": "Auto up to ISO 6400",
       "exposureComp": "0"
     }
+  },
+  {
+    "name": "Nostalgia Negative",
+    "author": "Ritchie Roesch",
+    "description": "Warm, faded analog look on the new Nostalgic Neg. sim. Grain: Strong/Small, Color Chrome FX Blue: Weak.",
+    "tags": [
+      "vintage",
+      "warm",
+      "analog",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/11/22/nostalgia-negative-my-first-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": -1,
+      "shadowTone": 1,
+      "color": 4,
+      "sharpness": -1,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 3,
+      "wbShiftB": -3,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "0 to +2/3"
+    },
+    "id": 7
+  },
+  {
+    "name": "Reala Ace",
+    "author": "Ritchie Roesch",
+    "description": "A natural, true-to-life Reala-style rendering. Grain: Weak/Small, Color Chrome FX Blue: Strong.",
+    "tags": [
+      "natural",
+      "everyday",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/09/15/reala-ace-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Negative",
+      "dynamicRange": "DR400",
+      "highlightTone": -1.5,
+      "shadowTone": -2,
+      "color": 2,
+      "sharpness": 0,
+      "noiseReduction": -4,
+      "whiteBalance": "Auto",
+      "wbShiftR": -1,
+      "wbShiftB": 1,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-1/3 to +1"
+    },
+    "id": 8
+  },
+  {
+    "name": "Superia Xtra 400",
+    "author": "Ritchie Roesch",
+    "description": "Punchy consumer-film colour à la Superia X-tra 400. Grain: Strong/Small, Color Chrome FX Blue: Weak.",
+    "tags": [
+      "film",
+      "punchy",
+      "everyday",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/09/superia-xtra-400-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Negative",
+      "dynamicRange": "DR400",
+      "highlightTone": 0,
+      "shadowTone": -1,
+      "color": 4,
+      "sharpness": -1,
+      "noiseReduction": -4,
+      "whiteBalance": "Auto",
+      "wbShiftR": 3,
+      "wbShiftB": -5,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Off",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "0 to +1"
+    },
+    "id": 9
+  },
+  {
+    "name": "Kodak Portra 400 v2",
+    "author": "Ritchie Roesch",
+    "description": "Soft, flattering Portra-style portrait colour. Grain: Strong/Small, Color Chrome FX Blue: Off.",
+    "tags": [
+      "portrait",
+      "film",
+      "soft",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/16/kodak-portra-400-v2-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR400",
+      "highlightTone": 0,
+      "shadowTone": -2,
+      "color": 2,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "5200K",
+      "wbShiftR": 1,
+      "wbShiftB": -6,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +1"
+    },
+    "id": 10
+  },
+  {
+    "name": "Kodak Gold 200",
+    "author": "Ritchie Roesch",
+    "description": "Golden, warm Kodak Gold look for sunny days. Grain: Strong/Small, Color Chrome FX Blue: Off.",
+    "tags": [
+      "warm",
+      "golden",
+      "film",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/10/24/kodak-gold-200-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR400",
+      "highlightTone": -1.5,
+      "shadowTone": 0.5,
+      "color": 3,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 4,
+      "wbShiftB": -5,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Weak",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+2/3 to +1"
+    },
+    "id": 11
+  },
+  {
+    "name": "Pacific Blues",
+    "author": "Ritchie Roesch",
+    "description": "Cool, faded blues with lifted shadows — coastal mood. Grain: Strong/Large, Color Chrome FX Blue: Weak.",
+    "tags": [
+      "cool",
+      "coastal",
+      "faded",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/06/pacific-blues-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Negative",
+      "dynamicRange": "DR400",
+      "highlightTone": -2,
+      "shadowTone": 3,
+      "color": 4,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "5800K",
+      "wbShiftR": 1,
+      "wbShiftB": -3,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+2/3 to +1"
+    },
+    "id": 12
+  },
+  {
+    "name": "Vintage Cinema",
+    "author": "Ritchie Roesch",
+    "description": "Muted, filmic vintage-cinema look with crushed colour. Grain: Strong/Small, Color Chrome FX Blue: Off.",
+    "tags": [
+      "cinematic",
+      "vintage",
+      "muted",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/06/07/vintage-cinema-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": 3,
+      "shadowTone": -2,
+      "color": -1,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "4900K",
+      "wbShiftR": 3,
+      "wbShiftB": 3,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -4,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-1/3 to -2"
+    },
+    "id": 13
+  },
+  {
+    "name": "Classic Color",
+    "author": "Ritchie Roesch",
+    "description": "Balanced, slightly retro everyday colour. Grain: Strong/Small, Color Chrome FX Blue: Strong.",
+    "tags": [
+      "everyday",
+      "retro",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/04/22/classic-color-fujifilm-x-t5-x-trans-v-and-x-e4-x-trans-iv-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR400",
+      "highlightTone": -0.5,
+      "shadowTone": -2,
+      "color": 3,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "5300K",
+      "wbShiftR": 0,
+      "wbShiftB": -6,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "0 to +1"
+    },
+    "id": 14
+  },
+  {
+    "name": "Fujicolor Superia 100",
+    "author": "Ritchie Roesch",
+    "description": "Clean, low-saturation daylight film look. Grain: Weak/Small, Color Chrome FX Blue: Off.",
+    "tags": [
+      "clean",
+      "daylight",
+      "film",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/07/11/fujicolor-superia-100-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Negative",
+      "dynamicRange": "DR-Auto",
+      "highlightTone": -1,
+      "shadowTone": -2,
+      "color": 1,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 0,
+      "wbShiftB": -1,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +2/3"
+    },
+    "id": 15
+  },
+  {
+    "name": "Cinestill 800T",
+    "author": "Ritchie Roesch",
+    "description": "Tungsten night-cinema look with cool casts and halation feel. Grain: Strong/Large, Color Chrome FX Blue: Weak.",
+    "tags": [
+      "night",
+      "cinematic",
+      "tungsten",
+      "eterna"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/04/16/cinestill-800t-fujifilm-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Eterna",
+      "dynamicRange": "DR400",
+      "highlightTone": 0,
+      "shadowTone": 2,
+      "color": 4,
+      "sharpness": -3,
+      "noiseReduction": -4,
+      "whiteBalance": "Fluorescent 3",
+      "wbShiftR": -6,
+      "wbShiftB": -4,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -5,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-1/3 to +2/3"
+    },
+    "id": 16
+  },
+  {
+    "name": "Kodak T-Max P3200",
+    "author": "Ritchie Roesch",
+    "description": "Gritty high-ISO black-and-white, T-Max P3200 grain. Grain: Strong/Large.",
+    "tags": [
+      "monochrome",
+      "grainy",
+      "high iso",
+      "acros"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/05/18/kodak-t-max-p3200-a-fujifilm-film-simulation-recipe-for-x-trans-iv-v/",
+    "settings": {
+      "filmSimulation": "Acros",
+      "dynamicRange": "DR400",
+      "highlightTone": 1,
+      "shadowTone": 3,
+      "color": 0,
+      "sharpness": 2,
+      "noiseReduction": -4,
+      "whiteBalance": "5500K",
+      "wbShiftR": 4,
+      "wbShiftB": 7,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Off",
+      "clarity": 1,
+      "iso": "up to ISO 12800",
+      "exposureComp": "0 to +2/3"
+    },
+    "id": 17
   }
 ]
