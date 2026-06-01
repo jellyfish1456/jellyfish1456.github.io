@@ -97,13 +97,18 @@ function buildCard(recipe) {
 let currentGalleryIndex = 0;
 let currentGalleryPhotos = [];
 
+function creditHtml(photo) {
+  if (!photo || !photo.credit) return '';
+  if (photo.creditUrl) return `📷 <a href="${photo.creditUrl}" target="_blank" rel="noopener">${photo.credit}</a>`;
+  return `Photo by ${photo.credit} on Unsplash`;
+}
+
 function showGalleryPhoto(index) {
   if (!currentGalleryPhotos.length) return;
   currentGalleryIndex = index;
   const photo = currentGalleryPhotos[index];
   document.getElementById('modal-main-photo').src = photo.url;
-  document.getElementById('modal-photo-credit').innerHTML =
-    `Photo by ${photo.credit} on Unsplash`;
+  document.getElementById('modal-photo-credit').innerHTML = creditHtml(photo);
   document.getElementById('gallery-counter').textContent =
     `${index + 1} / ${currentGalleryPhotos.length}`;
 
@@ -141,8 +146,7 @@ function openModal(id) {
     document.getElementById('gallery-counter').textContent = `1 / ${currentGalleryPhotos.length}`;
     document.getElementById('gallery-prev').style.visibility = 'hidden';
     document.getElementById('gallery-next').style.visibility = currentGalleryPhotos.length > 1 ? 'visible' : 'hidden';
-    document.getElementById('modal-photo-credit').innerHTML =
-      `Photo by ${currentGalleryPhotos[0].credit} on Unsplash`;
+    document.getElementById('modal-photo-credit').innerHTML = creditHtml(currentGalleryPhotos[0]);
     currentGalleryIndex = 0;
   } else {
     galleryEl.style.display = 'none';
@@ -843,6 +847,43 @@ async function loadDestinations() {
   renderDestinations();
 }
 
+function buildCityCard(dest) {
+  const spotsHtml = dest.spots.map((spot, i) => {
+    const key = `${dest.id}:${i}`;
+    spotIndex[key] = spot;
+    const cover = spot.photos[0];
+    return `
+      <div class="spot-card" onclick="openSpotModal('${key}')">
+        <div class="spot-card-photo">
+          <img src="${cover.url}" alt="${spot.name}" loading="lazy" onerror="this.style.opacity=0.15">
+          ${spot.photos.length > 1 ? `<span class="spot-card-count">📷 ${spot.photos.length}</span>` : ''}
+        </div>
+        <div class="spot-card-body">
+          <div class="spot-card-name">${spot.name}</div>
+          <div class="spot-card-name-zh">${spot.nameZh || ''}</div>
+          <div class="spot-card-recipe">🎞️ ${spot.recommendedRecipe}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="dest-card">
+      <div class="dest-banner" style="background-image:url('${dest.coverPhoto}')">
+        <div class="dest-banner-content">
+          <h3>${dest.flag} ${dest.city} <span class="dest-city-zh">${dest.cityZh}</span></h3>
+          <p class="dest-tagline">${dest.tagline}</p>
+        </div>
+      </div>
+      <div class="dest-meta">📍 <strong>${dest.country} ${dest.countryZh}</strong> &nbsp;·&nbsp; 🗓️ Best season: <strong>${dest.bestSeason}</strong></div>
+      ${dest.igTags && dest.igTags.length ? `
+      <div class="ig-explore">
+        <span class="ig-explore-label">📸 Find real Fuji shots on Instagram:</span>
+        ${dest.igTags.map(t => `<a class="ig-tag" href="https://www.instagram.com/explore/tags/${encodeURIComponent(t)}/" target="_blank" rel="noopener">#${t}</a>`).join('')}
+      </div>` : ''}
+      <div class="spots-grid">${spotsHtml}</div>
+    </div>`;
+}
+
 function renderDestinations() {
   const container = document.getElementById('destinations-list');
   if (!destinations.length) {
@@ -850,42 +891,38 @@ function renderDestinations() {
     return;
   }
 
-  container.innerHTML = destinations.map(dest => {
-    const spotsHtml = dest.spots.map((spot, i) => {
-      const key = `${dest.id}:${i}`;
-      spotIndex[key] = spot;
-      const cover = spot.photos[0];
-      return `
-        <div class="spot-card" onclick="openSpotModal('${key}')">
-          <div class="spot-card-photo">
-            <img src="${cover.url}" alt="${spot.name}" loading="lazy" onerror="this.style.opacity=0.15">
-            ${spot.photos.length > 1 ? `<span class="spot-card-count">📷 ${spot.photos.length}</span>` : ''}
-          </div>
-          <div class="spot-card-body">
-            <div class="spot-card-name">${spot.name}</div>
-            <div class="spot-card-name-zh">${spot.nameZh || ''}</div>
-            <div class="spot-card-recipe">🎞️ ${spot.recommendedRecipe}</div>
-          </div>
-        </div>`;
-    }).join('');
+  // group cities by country (preserve first-seen order)
+  const countries = [];
+  const byId = {};
+  destinations.forEach(d => {
+    const id = (d.country || 'Other').toLowerCase().replace(/\s+/g, '-');
+    if (!byId[id]) { byId[id] = { id, country: d.country, countryZh: d.countryZh || '', flag: d.flag || '🌍', cities: [] }; countries.push(byId[id]); }
+    byId[id].cities.push(d);
+  });
 
+  container.innerHTML = countries.map((c, idx) => {
+    const spotCount = c.cities.reduce((a, city) => a + city.spots.length, 0);
+    const open = idx === 0; // first country expanded by default
+    const cities = c.cities.map(buildCityCard).join('');
     return `
-      <div class="dest-card">
-        <div class="dest-banner" style="background-image:url('${dest.coverPhoto}')">
-          <div class="dest-banner-content">
-            <h3>${dest.flag} ${dest.city} <span class="dest-city-zh">${dest.cityZh}</span></h3>
-            <p class="dest-tagline">${dest.tagline}</p>
-          </div>
-        </div>
-        <div class="dest-meta">📍 <strong>${dest.country} ${dest.countryZh}</strong> &nbsp;·&nbsp; 🗓️ Best season: <strong>${dest.bestSeason}</strong></div>
-        ${dest.igTags && dest.igTags.length ? `
-        <div class="ig-explore">
-          <span class="ig-explore-label">📸 Find real Fuji shots on Instagram:</span>
-          ${dest.igTags.map(t => `<a class="ig-tag" href="https://www.instagram.com/explore/tags/${encodeURIComponent(t)}/" target="_blank" rel="noopener">#${t}</a>`).join('')}
-        </div>` : ''}
-        <div class="spots-grid">${spotsHtml}</div>
+      <div class="country-block ${open ? 'open' : ''}" id="country-${c.id}">
+        <button class="country-header" onclick="toggleCountry('${c.id}')" aria-expanded="${open}">
+          <span class="country-flag">${c.flag}</span>
+          <span class="country-name">${c.country} <span class="country-name-zh">${c.countryZh}</span></span>
+          <span class="country-count">${c.cities.length} cities · ${spotCount} spots</span>
+          <span class="country-chevron">▾</span>
+        </button>
+        <div class="country-cities">${cities}</div>
       </div>`;
   }).join('');
+}
+
+function toggleCountry(id) {
+  const el = document.getElementById('country-' + id);
+  if (!el) return;
+  const open = el.classList.toggle('open');
+  const btn = el.querySelector('.country-header');
+  if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 function showSpotPhoto(index) {
