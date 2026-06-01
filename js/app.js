@@ -357,11 +357,24 @@ async function init() {
   loadDestinations();
   initExpert();
 
+  // Back-to-top button visibility
+  const toTop = document.getElementById('to-top');
+  if (toTop) {
+    const onScroll = () => toTop.classList.toggle('show', window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   // Mobile nav: close the drawer after tapping any item
   const navEl = document.getElementById('header-nav');
   if (navEl) navEl.addEventListener('click', e => {
     if (e.target.closest('.nav-btn')) closeNav();
   });
+}
+
+function scrollToTop() {
+  closeNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function toggleNav() {

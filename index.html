@@ -18,7 +18,7 @@
   <!-- Header -->
   <header>
     <div class="header-inner">
-      <div class="logo">
+      <div class="logo" onclick="scrollToTop()" style="cursor:pointer">
         <div class="logo-icon">⬡</div>
         Kris's Fuji Recipe
       </div>
@@ -395,6 +395,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top" onclick="scrollToTop()">↑</button>
 
   <!-- Toast -->
   <div class="toast" id="toast"></div>

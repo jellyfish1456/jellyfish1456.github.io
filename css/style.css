@@ -1304,6 +1304,34 @@ header {
   color: var(--text-muted);
 }
 
+/* ── Back to top ── */
+.to-top {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 250;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover { opacity: 0.88; }
+
+@media (max-width: 600px) {
+  .to-top { bottom: 18px; left: 18px; width: 44px; height: 44px; }
+}
+
 /* ── Toast ── */
 .toast {
   position: fixed;
