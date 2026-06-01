@@ -702,6 +702,26 @@ header {
 
 .dest-meta strong { color: var(--text); }
 
+.ig-explore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--border);
+}
+.ig-explore-label { font-size: 13px; color: var(--text-muted); }
+.ig-tag {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(45deg, #f09433, #e6683c 30%, #dc2743 60%, #cc2366 80%, #bc1888);
+  transition: opacity 0.15s;
+}
+.ig-tag:hover { opacity: 0.85; text-decoration: none; }
+
 .spots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));

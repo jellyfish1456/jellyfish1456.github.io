@@ -878,6 +878,11 @@ function renderDestinations() {
           </div>
         </div>
         <div class="dest-meta">📍 <strong>${dest.country} ${dest.countryZh}</strong> &nbsp;·&nbsp; 🗓️ Best season: <strong>${dest.bestSeason}</strong></div>
+        ${dest.igTags && dest.igTags.length ? `
+        <div class="ig-explore">
+          <span class="ig-explore-label">📸 Find real Fuji shots on Instagram:</span>
+          ${dest.igTags.map(t => `<a class="ig-tag" href="https://www.instagram.com/explore/tags/${encodeURIComponent(t)}/" target="_blank" rel="noopener">#${t}</a>`).join('')}
+        </div>` : ''}
         <div class="spots-grid">${spotsHtml}</div>
       </div>`;
   }).join('');

@@ -104,6 +104,42 @@
         "gear": "35mm (50mm equiv) for the street compression; wide for the rooftop panorama. Tower gets crowded — go at opening."
       },
       {
+        "name": "Istanbul Streets",
+        "nameZh": "街頭巷弄 · İstiklal & Karaköy",
+        "tags": [
+          "street",
+          "candid",
+          "architecture"
+        ],
+        "recommendedRecipe": "Classic Negative Street",
+        "bestTime": "Late-afternoon golden light, or evening when İstiklal's lights and crowds come alive",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Istiklal%20str.%20Istanbul%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Nostalgic%20tram%20on%20Istiklal%20Avenue%20in%20Istanbul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20Istiklal%20Avenue%20from%20the%20entrance%20of%20Galatasaray%20High%20School.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Streets%20of%20Karak%C3%B6y%20in%20%C4%B0stanbul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "İstiklal Avenue is one long pedestrian river — plant yourself and let people flow past, or shoot from the hip for candid moments (photo 1).",
+          "Wait for the nostalgic red tram and frame it head-on down the street; it moves slowly so you can compose and catch passengers leaning out (photo 2).",
+          "Look up — the Beyoğlu facades, ornate balconies and wrought-iron street lamps make strong graphic backdrops (photo 3).",
+          "Duck into the steep side streets of Karaköy/Galata; converging buildings and a sliver of sky create natural leading lines and frames (photo 4)."
+        ],
+        "gear": "A 23mm or 35mm (35/50mm equiv) prime is ideal. Zone-focus around f/8 and keep shutter ≥1/250s to freeze walkers. Classic Neg. gives that punchy-yet-faded documentary street look."
+      },
+      {
         "name": "Grand Bazaar",
         "nameZh": "大巴札市集",
         "tags": [
@@ -170,6 +206,14 @@
         ],
         "gear": "Telephoto 50–200mm (75–300 equiv) to compress the skyline from the water; a tripod helps at dusk."
       }
+    ],
+    "igTags": [
+      "istanbul",
+      "istanbulstreet",
+      "istanbulstreetphotography",
+      "fujifilm_street",
+      "fujistreet",
+      "fujix_global"
     ]
   }
 ]
