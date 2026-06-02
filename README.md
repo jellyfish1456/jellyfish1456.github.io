@@ -11,7 +11,7 @@ Agent 本身是個聰明的「通才」，但通才不懂你公司、你這行�
 
 對應到你們的 flow
 這段是讓懷疑論者「有感」的關鍵。
-傳統做法是寫一支 Tcl 或 shell script，依序把 flow 跑完。它不「懂」任何東西，只是按順序下指令。一報錯，script 通常就停在那、丟一個 log，然後等工程師自己去讀 log、判斷是真錯還是 false positive、修好、再重跑。PDK 換版本、tool 輸出格式變了、冒出新的 corner case——統統要人回去改 script。
+傳統做法是寫一支 Tcl 或 shell script，依序把 flow 跑完。它不「懂」任何東西，只是按順序下指令。一報錯，script 通常就停在那、丟一個 log，然後等工程師自己去讀 log、判斷是真錯還是 false positive、修好、再重跑。換版本、tool 輸出格式變了、冒出新的 corner case——統統要人回去改 script。
 Agent 的做法是：讀懂 xx的 error report，分辨這是哪一類 mismatch（short、missing device、還是已知的假性錯誤），判斷該不該直接往下跑 yyy，還是先停下來處理；看 zzzz violation 時能分辨是 啥問題，並推測典型成因。重點是它會「看懂輸出再決定下一步」，而不是無腦往下傳。
 而 skill 在這裡扮演的，就是把你們團隊的內隱知識餵給它。可以是一個 skill——把那種「這個 warning 在我們流程裡一定是 benign，因為我們 substrate contact 是這樣接的」這類手冊查不到的部門知識寫進去。「怎麼判讀 error 」又是另一個 skill。Agent 提供通用智力，skill 提供你們累積的眉角。
 給懷疑論者的殺手鐧
