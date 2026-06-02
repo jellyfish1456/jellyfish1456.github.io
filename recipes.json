@@ -345,7 +345,7 @@
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2023/09/15/reala-ace-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
     "settings": {
-      "filmSimulation": "Classic Negative",
+      "filmSimulation": "Classic Neg.",
       "dynamicRange": "DR400",
       "highlightTone": -1.5,
       "shadowTone": -2,
@@ -384,7 +384,7 @@
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2022/12/09/superia-xtra-400-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
     "settings": {
-      "filmSimulation": "Classic Negative",
+      "filmSimulation": "Classic Neg.",
       "dynamicRange": "DR400",
       "highlightTone": 0,
       "shadowTone": -1,
@@ -501,7 +501,7 @@
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2022/12/06/pacific-blues-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
     "settings": {
-      "filmSimulation": "Classic Negative",
+      "filmSimulation": "Classic Neg.",
       "dynamicRange": "DR400",
       "highlightTone": -2,
       "shadowTone": 3,
@@ -617,7 +617,7 @@
     "recipeSource": "Fuji X Weekly",
     "recipeUrl": "https://fujixweekly.com/2023/07/11/fujicolor-superia-100-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
     "settings": {
-      "filmSimulation": "Classic Negative",
+      "filmSimulation": "Classic Neg.",
       "dynamicRange": "DR-Auto",
       "highlightTone": -1,
       "shadowTone": -2,
@@ -719,5 +719,505 @@
         "creditUrl": "https://fujixweekly.com/2023/05/18/kodak-t-max-p3200-a-fujifilm-film-simulation-recipe-for-x-trans-iv-v/"
       }
     ]
+  },
+  {
+    "name": "1970s Summer",
+    "author": "Ritchie Roesch",
+    "description": "Faded, sun-bleached 70s colour. Grain Strong/Large, Color Chrome FX Blue Strong.",
+    "tags": [
+      "vintage",
+      "summer",
+      "faded",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/11/27/1970s-summer-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": -2,
+      "shadowTone": -0.5,
+      "color": -2,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "6500K",
+      "wbShiftR": -1,
+      "wbShiftB": -4,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +1"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2022/11/52517306621_e2933488f3_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2022/11/27/1970s-summer-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 18
+  },
+  {
+    "name": "Timeless Negative",
+    "author": "Ritchie Roesch",
+    "description": "Muted, low-saturation timeless film look. Grain Weak/Small.",
+    "tags": [
+      "muted",
+      "timeless",
+      "film",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/11/30/timeless-negative-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": 2,
+      "shadowTone": -2,
+      "color": -3,
+      "sharpness": 0,
+      "noiseReduction": -4,
+      "whiteBalance": "Auto",
+      "wbShiftR": 2,
+      "wbShiftB": -3,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-2/3 to +1/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2022/11/52532646066_8aedbcc4e1_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2022/11/30/timeless-negative-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 19
+  },
+  {
+    "name": "Kodak Vericolor Warm",
+    "author": "Ritchie Roesch",
+    "description": "Very warm Vericolor portrait emulation. Grain Weak/Small, CC FX Blue Strong.",
+    "tags": [
+      "warm",
+      "portrait",
+      "film",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/12/kodak-vericolor-warm-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR100",
+      "highlightTone": -2,
+      "shadowTone": -1,
+      "color": 2,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "3000K",
+      "wbShiftR": 8,
+      "wbShiftB": -9,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Strong",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "0 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2022/12/52517904633_a4838d35c3_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2022/12/12/kodak-vericolor-warm-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 20
+  },
+  {
+    "name": "Kodak Negative",
+    "author": "Ritchie Roesch",
+    "description": "Punchy Kodak colour-negative look with lifted shadows. Grain Weak/Large.",
+    "tags": [
+      "film",
+      "punchy",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/22/kodak-negative-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": -0.5,
+      "shadowTone": 2.5,
+      "color": 4,
+      "sharpness": -1,
+      "noiseReduction": -4,
+      "whiteBalance": "Auto",
+      "wbShiftR": 1,
+      "wbShiftB": -4,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Off",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2022/12/52576781898_7de5336954_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2022/12/22/kodak-negative-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 21
+  },
+  {
+    "name": "Ilford FP4 Plus 125",
+    "author": "Ritchie Roesch",
+    "description": "Classic Ilford FP4+ medium-contrast black & white. Grain Weak/Large.",
+    "tags": [
+      "monochrome",
+      "film",
+      "classic"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2022/12/28/ilford-fp4-plus-125-fujifilm-x-t5-x-trans-v-x-trans-iv-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Monochrome",
+      "dynamicRange": "DR200",
+      "highlightTone": -0.5,
+      "shadowTone": -1.5,
+      "color": 0,
+      "sharpness": 0,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 6,
+      "wbShiftB": -8,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Off",
+      "clarity": 2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-1 to -1/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2022/12/52592235280_3849239e5e_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2022/12/28/ilford-fp4-plus-125-fujifilm-x-t5-x-trans-v-x-trans-iv-film-simulation-recipe/"
+      }
+    ],
+    "id": 22
+  },
+  {
+    "name": "Vintage Bronze",
+    "author": "Ritchie Roesch",
+    "description": "Desaturated bronze bleach-bypass look. Grain Weak/Large.",
+    "tags": [
+      "cinematic",
+      "desaturated",
+      "bleach bypass"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/01/13/vintage-bronze-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Eterna Bleach Bypass",
+      "dynamicRange": "DR200",
+      "highlightTone": 0,
+      "shadowTone": -1,
+      "color": 0,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 6,
+      "wbShiftB": -8,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Off",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-2/3 to 0"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2023/01/52585443532_0869d642b3_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2023/01/13/vintage-bronze-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 23
+  },
+  {
+    "name": "Kodak Ultramax 400",
+    "author": "Ritchie Roesch",
+    "description": "Bright, punchy consumer-film colour. Grain Strong/Large.",
+    "tags": [
+      "film",
+      "punchy",
+      "everyday",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/01/17/kodak-ultramax-400-a-film-simulation-recipe-for-the-fujifilm-x-t5-x-trans-v/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR-Auto",
+      "highlightTone": 1,
+      "shadowTone": 1,
+      "color": 4,
+      "sharpness": 0,
+      "noiseReduction": -4,
+      "whiteBalance": "Auto",
+      "wbShiftR": 1,
+      "wbShiftB": -5,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Weak",
+      "clarity": 3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +1"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2023/01/52630877397_8fbef38baf_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2023/01/17/kodak-ultramax-400-a-film-simulation-recipe-for-the-fujifilm-x-t5-x-trans-v/"
+      }
+    ],
+    "id": 24
+  },
+  {
+    "name": "Kodachrome 25",
+    "author": "Ritchie Roesch",
+    "description": "Crisp, fine-grained low-ISO Kodachrome look. Grain Off.",
+    "tags": [
+      "slide",
+      "crisp",
+      "vintage",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/03/06/kodachrome-25-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR400",
+      "highlightTone": 0.5,
+      "shadowTone": -0.5,
+      "color": 1,
+      "sharpness": 3,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 2,
+      "wbShiftB": -4,
+      "grainEffect": "Off",
+      "colorChromeEffect": "Strong",
+      "clarity": 3,
+      "iso": "Auto up to ISO 1600",
+      "exposureComp": "0 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2023/03/52730076037_0d1cd90567_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2023/03/06/kodachrome-25-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 25
+  },
+  {
+    "name": "Fujicolor Reala 100",
+    "author": "Ritchie Roesch",
+    "description": "Natural, true-colour Reala 100 emulation. Grain Weak/Small.",
+    "tags": [
+      "natural",
+      "film",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2023/09/06/fujicolor-reala-100-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": -1,
+      "shadowTone": -1,
+      "color": 0,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "Daylight",
+      "wbShiftR": 0,
+      "wbShiftB": 0,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Strong",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "0 to +1"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2023/09/53169066674_c369f284a6_h.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2023/09/06/fujicolor-reala-100-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 26
+  },
+  {
+    "name": "Kodak Royal Gold 400",
+    "author": "Ritchie Roesch",
+    "description": "Warm, saturated Royal Gold print look. Grain Strong/Small.",
+    "tags": [
+      "warm",
+      "film",
+      "classic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/03/06/kodak-royal-gold-400-fujifilm-x-trans-iv-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Neg.",
+      "dynamicRange": "DR400",
+      "highlightTone": -1,
+      "shadowTone": 1,
+      "color": 4,
+      "sharpness": -1,
+      "noiseReduction": -4,
+      "whiteBalance": "Shade",
+      "wbShiftR": 3,
+      "wbShiftB": 5,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Weak",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2024/03/53571290427_0cee583444_c.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2024/03/06/kodak-royal-gold-400-fujifilm-x-trans-iv-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 27
+  },
+  {
+    "name": "Fujicolor 100 Industrial",
+    "author": "Ritchie Roesch",
+    "description": "Cool-warm Fujicolor 100 Industrial look on Reala Ace. Grain Weak/Small.",
+    "tags": [
+      "film",
+      "muted",
+      "reala ace"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/04/05/fujicolor-100-industrial-fujifilm-x100vi-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Reala Ace",
+      "dynamicRange": "DR400",
+      "highlightTone": 0.5,
+      "shadowTone": 1.5,
+      "color": -1,
+      "sharpness": -1,
+      "noiseReduction": -4,
+      "whiteBalance": "3100K",
+      "wbShiftR": 8,
+      "wbShiftB": -8,
+      "grainEffect": "Weak",
+      "colorChromeEffect": "Off",
+      "clarity": -2,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "-1/3 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2024/04/53630964175_de4c5f43cb_h.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2024/04/05/fujicolor-100-industrial-fujifilm-x100vi-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 28
+  },
+  {
+    "name": "Nostalgic Americana",
+    "author": "Ritchie Roesch",
+    "description": "Faded mid-century American road-trip mood. Grain Strong/Large.",
+    "tags": [
+      "vintage",
+      "americana",
+      "faded",
+      "nostalgic neg"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/04/29/nostalgic-americana-fujifilm-x-t5-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Nostalgic Neg.",
+      "dynamicRange": "DR200",
+      "highlightTone": -1,
+      "shadowTone": -1.5,
+      "color": -2,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "5800K",
+      "wbShiftR": -2,
+      "wbShiftB": -4,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": -3,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+1/3 to +2/3"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2024/04/53596582126_0b1b18a1e3_h.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2024/04/29/nostalgic-americana-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 29
+  },
+  {
+    "name": "Texas Sun",
+    "author": "Ritchie Roesch",
+    "description": "Warm, sunny high-colour Classic Chrome. Grain Strong/Small.",
+    "tags": [
+      "warm",
+      "sunny",
+      "classic chrome"
+    ],
+    "camera": "X-Trans V (X-T5 / X-T50 / X100VI / X-H2)",
+    "recipeSource": "Fuji X Weekly",
+    "recipeUrl": "https://fujixweekly.com/2024/12/04/texas-sun-fujifilm-x-trans-v-film-simulation-recipe/",
+    "settings": {
+      "filmSimulation": "Classic Chrome",
+      "dynamicRange": "DR200",
+      "highlightTone": -2,
+      "shadowTone": -0.5,
+      "color": 4,
+      "sharpness": -2,
+      "noiseReduction": -4,
+      "whiteBalance": "6500K",
+      "wbShiftR": 2,
+      "wbShiftB": -6,
+      "grainEffect": "Strong",
+      "colorChromeEffect": "Strong",
+      "clarity": 0,
+      "iso": "Auto up to ISO 6400",
+      "exposureComp": "+2/3 to +1"
+    },
+    "photos": [
+      {
+        "url": "https://fujixweekly.com/wp-content/uploads/2024/12/54183229451_c2fc0c6173_h.jpg",
+        "credit": "Fuji X Weekly",
+        "creditUrl": "https://fujixweekly.com/2024/12/04/texas-sun-fujifilm-x-trans-v-film-simulation-recipe/"
+      }
+    ],
+    "id": 30
   }
 ]
