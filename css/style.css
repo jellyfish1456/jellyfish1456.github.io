@@ -852,6 +852,15 @@ header {
 }
 
 /* Spot modal */
+.spot-ig-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.spot-ig-label { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
 .spot-info-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
