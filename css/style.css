@@ -557,6 +557,27 @@ header {
 
 .modal-close:hover { color: var(--text); background: #fff; }
 
+.modal-link {
+  position: absolute;
+  top: 14px;
+  right: 56px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+.modal-link:hover { color: var(--text); background: #fff; border-color: var(--accent); }
+
 .modal-title {
   font-size: 24px;
   font-weight: 800;

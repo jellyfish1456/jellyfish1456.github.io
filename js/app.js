@@ -198,11 +198,40 @@ function openModal(id) {
 
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  setShareHash('recipe=' + slugify(recipe.name));
 }
 
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('open');
   document.body.style.overflow = '';
+  clearShareHash();
+}
+
+/* ── Shareable deep links ── */
+function slugify(s) {
+  return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+function setShareHash(h) { history.replaceState(null, '', '#' + h); }
+function clearShareHash() {
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+}
+function copyShareLink() {
+  navigator.clipboard.writeText(location.href).then(
+    () => showToast('🔗 Link copied to clipboard!'),
+    () => showToast('Copy this URL: ' + location.href)
+  );
+}
+function applyHash() {
+  const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (!h) return;
+  if (h.startsWith('recipe=')) {
+    const slug = h.slice(7);
+    const r = recipes.find(x => slugify(x.name) === slug);
+    if (r) openModal(r.id);
+  } else if (h.startsWith('spot=')) {
+    const key = h.slice(5);
+    if (spotIndex[key]) openSpotModal(key);
+  }
 }
 
 function filterRecipes() {
@@ -357,6 +386,8 @@ async function init() {
 
   loadDestinations();
   initExpert();
+
+  window.addEventListener('hashchange', applyHash);
 
   // Back-to-top button visibility
   const toTop = document.getElementById('to-top');
@@ -859,6 +890,7 @@ async function loadDestinations() {
     destinations = [];
   }
   renderDestinations();
+  applyHash();  // open a recipe/spot if the URL points to one
 }
 
 function buildCityCard(dest) {
@@ -988,11 +1020,13 @@ function openSpotModal(key) {
 
   document.getElementById('spot-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  setShareHash('spot=' + encodeURIComponent(key));
 }
 
 function closeSpotModal() {
   document.getElementById('spot-overlay').classList.remove('open');
   document.body.style.overflow = '';
+  clearShareHash();
 }
 
 document.addEventListener('DOMContentLoaded', init);
