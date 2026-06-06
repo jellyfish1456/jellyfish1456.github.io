@@ -1011,6 +1011,17 @@ function openSpotModal(key) {
   document.getElementById('spot-angles').innerHTML =
     spot.angles.map(a => `<li>${a}</li>`).join('');
 
+  // Instagram tags for this spot
+  const igSec = document.getElementById('spot-ig-section');
+  const igEl = document.getElementById('spot-ig');
+  if (spot.igTags && spot.igTags.length) {
+    igSec.style.display = '';
+    igEl.innerHTML = spot.igTags.map(t =>
+      `<a class="ig-tag" href="https://www.instagram.com/explore/tags/${encodeURIComponent(t)}/" target="_blank" rel="noopener">#${t}</a>`).join('');
+  } else {
+    igSec.style.display = 'none';
+  }
+
   // Clicking the recipe box jumps to that recipe
   const recipeBox = document.getElementById('spot-recipe-box');
   recipeBox.onclick = () => {

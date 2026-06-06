@@ -39,7 +39,13 @@
           "Come back at blue hour: the building is floodlit and the deep blue sky makes the warm stone pop (see photo 2).",
           "Inside, point straight up at the central dome to capture the ring of windows and the gold calligraphy medallions (photo 3). Brace on a railing — it's dim, around 1/30s."
         ],
-        "gear": "Wide 16mm (24mm equiv) or wider for interiors. Bump ISO to 3200–6400; the interior is much darker than it looks."
+        "gear": "Wide 16mm (24mm equiv) or wider for interiors. Bump ISO to 3200–6400; the interior is much darker than it looks.",
+        "igTags": [
+          "hagiasophia",
+          "ayasofya",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Blue Mosque",
@@ -70,7 +76,13 @@
           "Get low and shoot the cascading 'wedding-cake' domes slightly off-centre for depth rather than dead-on symmetry.",
           "At sunset / blue hour the sky turns pink-violet behind the silhouetted minarets (photos 2–3) — Velvia's saturation makes this sing."
         ],
-        "gear": "Tripod for blue hour (1–4s exposures). A polariser cuts glare on the domes and deepens the sky."
+        "gear": "Tripod for blue hour (1–4s exposures). A polariser cuts glare on the domes and deepens the sky.",
+        "igTags": [
+          "bluemosque",
+          "sultanahmet",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Galata Tower",
@@ -101,7 +113,13 @@
           "Back up into the streets of Karaköy/Galata and let the rooftops and converging buildings frame the tower (photo 2).",
           "At golden hour from across the Golden Horn the whole hillside glows and seagulls circle the tower (photo 3) — pre-focus and shoot bursts to catch a bird in frame."
         ],
-        "gear": "35mm (50mm equiv) for the street compression; wide for the rooftop panorama. Tower gets crowded — go at opening."
+        "gear": "35mm (50mm equiv) for the street compression; wide for the rooftop panorama. Tower gets crowded — go at opening.",
+        "igTags": [
+          "galatatower",
+          "galatakulesi",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Istanbul Streets",
@@ -205,7 +223,13 @@
           "Look up — the Beyoğlu facades, ornate balconies and wrought-iron street lamps make strong graphic backdrops (photo 3).",
           "Duck into the steep side streets of Karaköy/Galata; converging buildings and a sliver of sky create natural leading lines and frames (photo 4)."
         ],
-        "gear": "A 23mm or 35mm (35/50mm equiv) prime is ideal. Zone-focus around f/8 and keep shutter ≥1/250s to freeze walkers. Classic Neg. gives that punchy-yet-faded documentary street look."
+        "gear": "A 23mm or 35mm (35/50mm equiv) prime is ideal. Zone-focus around f/8 and keep shutter ≥1/250s to freeze walkers. Classic Neg. gives that punchy-yet-faded documentary street look.",
+        "igTags": [
+          "istanbulstreet",
+          "istiklalcaddesi",
+          "balat",
+          "fujifilm_street"
+        ]
       },
       {
         "name": "Grand Bazaar",
@@ -236,7 +260,13 @@
           "Frame a single shopfront or stall packed with colourful goods — hats, lamps, textiles (photo 2). Fujicolor 200's punchy colour suits it.",
           "In the older han courtyards, the worn stone columns and arches make a great wide environmental shot (photo 3); expose for the bright shop lights and let the vaults go moody."
         ],
-        "gear": "Fast prime (f/2 or wider) for the dim interior; ISO 1600–6400. Keep your bag in front — it's crowded."
+        "gear": "Fast prime (f/2 or wider) for the dim interior; ISO 1600–6400. Keep your bag in front — it's crowded.",
+        "igTags": [
+          "grandbazaar",
+          "kapalicarsi",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Bosphorus & Maiden's Tower",
@@ -272,7 +302,13 @@
           "From the Galata Bridge, the skyline rises straight from the water (photo 3); the fishermen's rods make a strong repeating foreground.",
           "For the classic panorama, shoot from a rooftop over the Golden Horn at dusk — mosques line the ridge and ferries trail wakes (photo 4). Eterna's muted tones suit the hazy, backlit harbour light."
         ],
-        "gear": "Telephoto 50–200mm (75–300 equiv) to compress the skyline from the water; a tripod helps at dusk."
+        "gear": "Telephoto 50–200mm (75–300 equiv) to compress the skyline from the water; a tripod helps at dusk.",
+        "igTags": [
+          "kizkulesi",
+          "maidenstower",
+          "bosphorus",
+          "istanbul"
+        ]
       },
       {
         "name": "Basilica Cistern",
@@ -303,7 +339,13 @@
           "The upside-down Medusa-head column base is the must-shoot detail (photo 3).",
           "Brace on the railing for a steady long exposure — it's dark and atmospheric."
         ],
-        "gear": "Fast wide lens, high ISO (3200–12800). Eterna holds the warm-lit shadows without clipping."
+        "gear": "Fast wide lens, high ISO (3200–12800). Eterna holds the warm-lit shadows without clipping.",
+        "igTags": [
+          "basilicacistern",
+          "yerebatansarnici",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Spice Bazaar",
@@ -330,7 +372,13 @@
           "Frame a spice or lokum stall bursting with colour — mounds of saffron, tea and Turkish delight.",
           "Catch shoppers mid-stride under the arches for life and scale."
         ],
-        "gear": "Fast standard zoom; ISO 1600+. Fujicolor 200's punchy colour suits the spices and lamps."
+        "gear": "Fast standard zoom; ISO 1600+. Fujicolor 200's punchy colour suits the spices and lamps.",
+        "igTags": [
+          "spicebazaar",
+          "misircarsisi",
+          "istanbul",
+          "fujifilm"
+        ]
       },
       {
         "name": "Taksim Square",
@@ -357,7 +405,13 @@
           "Shoot the wide-open plaza with crowds and the AKM cultural centre as backdrop (photo 2).",
           "Use the square as the gateway to İstiklal Avenue for street-life sequences."
         ],
-        "gear": "23–35mm. Classic Neg. for lively, documentary street colour."
+        "gear": "23–35mm. Classic Neg. for lively, documentary street colour.",
+        "igTags": [
+          "taksim",
+          "taksimsquare",
+          "istanbul",
+          "fujifilm"
+        ]
       }
     ],
     "igTags": [
@@ -416,7 +470,13 @@
           "Use the rising sun as a backlight and let a single balloon become a silhouette against the glow (photo 1).",
           "If you fly, shoot down onto the striped valleys with other balloons mid-frame for scale (photo 3)."
         ],
-        "gear": "Wide to standard zoom (16–55). Meter for the bright sky and let foreground stay dark; ISO low. Velvia adds punch to the dawn colour."
+        "gear": "Wide to standard zoom (16–55). Meter for the bright sky and let foreground stay dark; ISO low. Velvia adds punch to the dawn colour.",
+        "igTags": [
+          "cappadocia",
+          "kapadokya",
+          "hotairballoon",
+          "fujifilm"
+        ]
       },
       {
         "name": "Göreme Open-Air Museum",
@@ -447,7 +507,13 @@
           "Step back for the town-and-valley overview where cave dwellings pepper the hillside (photos 2–3).",
           "Inside the chapels photography is often restricted — respect signs; shoot the exteriors and tunnels instead."
         ],
-        "gear": "23–35mm prime. The warm tuff stone loves Kodachrome 64's muted-warm palette."
+        "gear": "23–35mm prime. The warm tuff stone loves Kodachrome 64's muted-warm palette.",
+        "igTags": [
+          "goreme",
+          "goremeopenairmuseum",
+          "cappadocia",
+          "fujifilm"
+        ]
       },
       {
         "name": "Fairy Chimneys & Rock Valleys",
@@ -486,7 +552,13 @@
           "Side-light at golden hour makes the eroded cones and 'mushroom' rocks pop in 3D (photos 1, 4).",
           "Climb a ridge for a layered panorama of the striped valleys (photos 3, 5)."
         ],
-        "gear": "Standard to short tele (35–90) to compress the rock layers. A polariser deepens the sky. Velvia for saturated rock tones."
+        "gear": "Standard to short tele (35–90) to compress the rock layers. A polariser deepens the sky. Velvia for saturated rock tones.",
+        "igTags": [
+          "fairychimneys",
+          "peribacalari",
+          "pasabag",
+          "cappadocia"
+        ]
       },
       {
         "name": "Uçhisar Castle",
@@ -517,7 +589,13 @@
           "Climb to the top for a 360° panorama over Pigeon Valley at sunset.",
           "In the lanes below, frame an old cart or doorway against the minaret and rock (photo 3)."
         ],
-        "gear": "Wide for the castle mass; 35mm for lanes. Best colour in the last hour of light."
+        "gear": "Wide for the castle mass; 35mm for lanes. Best colour in the last hour of light.",
+        "igTags": [
+          "uchisar",
+          "uchisarcastle",
+          "cappadocia",
+          "fujifilm"
+        ]
       },
       {
         "name": "Kaymaklı Underground City",
@@ -540,7 +618,13 @@
           "Use the worn stairways and round 'millstone' doors as compositional anchors.",
           "Include a person for scale in the low passages — it tells the claustrophobic story."
         ],
-        "gear": "Fast wide lens, high ISO (3200–12800). Eterna's gentle contrast holds the deep shadows without clipping."
+        "gear": "Fast wide lens, high ISO (3200–12800). Eterna's gentle contrast holds the deep shadows without clipping.",
+        "igTags": [
+          "kaymakli",
+          "undergroundcity",
+          "cappadocia",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -590,7 +674,13 @@
           "Get low and let the monumental columns tower over the frame against blue sky.",
           "Include the patterned stone plaza as foreground leading lines toward the building (photo 3)."
         ],
-        "gear": "Wide 16mm for the symmetry; a polariser deepens the sky. Velvia gives the pale stone and flags punch."
+        "gear": "Wide 16mm for the symmetry; a polariser deepens the sky. Velvia gives the pale stone and flags punch.",
+        "igTags": [
+          "anitkabir",
+          "ankara",
+          "ataturk",
+          "fujifilm"
+        ]
       },
       {
         "name": "Ankara Castle",
@@ -613,7 +703,13 @@
           "Frame the weathered towers against the sky; the festival bunting adds colour and lines (photo 1).",
           "In the lanes below, shoot doorways and stone walls for texture-rich street frames."
         ],
-        "gear": "23–35mm prime. Classic Neg. suits the warm stone and old-town mood."
+        "gear": "23–35mm prime. Classic Neg. suits the warm stone and old-town mood.",
+        "igTags": [
+          "ankarakalesi",
+          "ankaracastle",
+          "ankara",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -656,7 +752,13 @@
           "Shoot from the courtyard with people for scale and a sense of pilgrimage.",
           "Inside, photography may be restricted — respect signage and focus on the exterior and courtyard."
         ],
-        "gear": "Standard zoom. Kodachrome 64's muted warmth balances the vivid dome without over-saturating."
+        "gear": "Standard zoom. Kodachrome 64's muted warmth balances the vivid dome without over-saturating.",
+        "igTags": [
+          "mevlana",
+          "mevlanamuseum",
+          "konya",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -703,7 +805,13 @@
           "Move in close for the intricate muqarnas (stalactite) carving in the doorway (photo 2).",
           "Inside the courtyard, use the arcades and the central kiosk-mosque as leading lines."
         ],
-        "gear": "Wide for the portal; macro/tele for carving detail. Classic Neg. suits the weathered honey-coloured stone."
+        "gear": "Wide for the portal; macro/tele for carving detail. Classic Neg. suits the weathered honey-coloured stone.",
+        "igTags": [
+          "sultanhani",
+          "kervansaray",
+          "caravanserai",
+          "silkroad"
+        ]
       }
     ]
   },
@@ -750,7 +858,13 @@
           "At sunset the white calcium glows warm and the blue water pops — shoot into the light for reflections.",
           "Look for a lone figure on the terraces for scale against the vast white slope."
         ],
-        "gear": "Wide to standard. A polariser controls glare on the water; ND helps for silky long exposures. Velvia for saturated pools."
+        "gear": "Wide to standard. A polariser controls glare on the water; ND helps for silky long exposures. Velvia for saturated pools.",
+        "igTags": [
+          "pamukkale",
+          "travertenler",
+          "cottoncastle",
+          "fujifilm"
+        ]
       },
       {
         "name": "Hierapolis",
@@ -777,7 +891,13 @@
           "The huge Roman theatre is best from the upper tiers looking down across the stage (photo 2).",
           "Combine ruins in the foreground with the white travertines below for a layered story."
         ],
-        "gear": "Standard zoom; short tele to compress the theatre tiers. Kodachrome 64 flatters the warm stone."
+        "gear": "Standard zoom; short tele to compress the theatre tiers. Kodachrome 64 flatters the warm stone.",
+        "igTags": [
+          "hierapolis",
+          "pamukkale",
+          "ancientcity",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -819,7 +939,13 @@
           "Step to the side and use the marble street as a leading line toward the library.",
           "Include the statues in the niches as detail shots with a short tele."
         ],
-        "gear": "Wide for the facade; 50mm-equiv for details. Kodachrome 64 renders the warm marble beautifully."
+        "gear": "Wide for the facade; 50mm-equiv for details. Kodachrome 64 renders the warm marble beautifully.",
+        "igTags": [
+          "ephesus",
+          "efes",
+          "celsuslibrary",
+          "fujifilm"
+        ]
       },
       {
         "name": "Great Theatre",
@@ -842,7 +968,13 @@
           "Use the curve of the cavea as a strong compositional sweep.",
           "Place people on the steps for scale — the theatre held 25,000."
         ],
-        "gear": "Wide to capture the scale; a polariser deepens the sky over the pale stone."
+        "gear": "Wide to capture the scale; a polariser deepens the sky over the pale stone.",
+        "igTags": [
+          "ephesus",
+          "efes",
+          "efesantikkenti",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -884,7 +1016,13 @@
           "Wander the narrow lanes for doorway, vine and craft-stall detail shots.",
           "Shoot back down an alley with the hills beyond for depth."
         ],
-        "gear": "35–90mm to compress the hillside. Kodachrome 64 flatters the warm stone and foliage."
+        "gear": "35–90mm to compress the hillside. Kodachrome 64 flatters the warm stone and foliage.",
+        "igTags": [
+          "sirince",
+          "selcuk",
+          "izmir",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -926,7 +1064,13 @@
           "At sunset, silhouette the island fortress against the colour over the Aegean.",
           "Use the boats and palms as foreground framing."
         ],
-        "gear": "Wide to standard. A polariser deepens the sea; Velvia for vivid seaside colour."
+        "gear": "Wide to standard. A polariser deepens the sea; Velvia for vivid seaside colour.",
+        "igTags": [
+          "kusadasi",
+          "aegean",
+          "turkey",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -972,7 +1116,13 @@
           "From across Konak Square, catch pigeons taking off with the tower and mosque behind (photo 2).",
           "Get low for a dramatic upward angle of the marble filigree."
         ],
-        "gear": "23–35mm. Tripod for blue hour. Classic Neg. gives a lively, slightly retro street look."
+        "gear": "23–35mm. Tripod for blue hour. Classic Neg. gives a lively, slightly retro street look.",
+        "igTags": [
+          "izmirsaatkulesi",
+          "konak",
+          "izmir",
+          "fujifilm"
+        ]
       },
       {
         "name": "Asansör",
@@ -995,7 +1145,13 @@
           "Frame the historic brick elevator tower against the sky from the street below.",
           "Use the narrow, picturesque Dario Moreno Street as a leading line up to the lift."
         ],
-        "gear": "Standard zoom. Eterna's gentle tones suit the hazy seaside light."
+        "gear": "Standard zoom. Eterna's gentle tones suit the hazy seaside light.",
+        "igTags": [
+          "asansor",
+          "izmir",
+          "karatas",
+          "fujifilm"
+        ]
       }
     ]
   },
@@ -1045,7 +1201,13 @@
           "Capture the giant black calligraphy panels against the pale walls and 20 domes.",
           "Use the receding arches as symmetrical leading lines down the prayer hall."
         ],
-        "gear": "Fast wide lens; ISO 1600–6400 indoors. Kodachrome 64 keeps the warm stone natural."
+        "gear": "Fast wide lens; ISO 1600–6400 indoors. Kodachrome 64 keeps the warm stone natural.",
+        "igTags": [
+          "ulucamii",
+          "bursa",
+          "grandmosque",
+          "fujifilm"
+        ]
       }
     ]
   }
