@@ -1,56 +1,115 @@
-這是一個非常漂亮且具備實戰價值的架構設計。你提到的兩個核心原則——「Deterministic 工具負責壓縮，LLM 負責推理」以及「跨階段的 Causal Chain (因果鏈) 根因分析」——精準打中了目前 AI 落地 EDA (Electronic Design Automation) 領域的最大痛點：Token 成本、幻覺 (Hallucination) 以及下游 Error 噪音。
+這是一套整合了「任務指派機制」與「專屬技能定義 (skill.md)」的 a / b / c Debugging Verification Framework 系統架構重構版。
 
-這個專案的賣點極強，以下為你梳理出這個 c Debugging Verification Framework 的系統專案計畫（Plan Mode）。
+透過明確定義 Orchestrator 與 Sub-agents 的分工，系統能將龐雜的除錯流程轉化為高度組織化的 Multi-Agent 協作網。
 
-1. 系統架構設計 (Hybrid Multi-Agent System)
-系統將分為三個主要層級：資料處理層、子代理層（Domain Experts）、以及編排層（Orchestrator）。
+1. 系統底層：Deterministic Parsing Layer (確定性工具層)
+這是系統的基礎防線，由 Orchestrator 或 Sub-agents 視需要呼叫的自動化 Tools，負責將海量雜訊壓縮為高含金量的數據。
 
-A. Deterministic Parsing Layer (確定性工具層)
-這是系統的第一道防線，作為 Agent 可呼叫的 Tools。
+Log Summarizer Tool: 針對 GB 級別的 a / b / c log，透過寫死的 Regex 腳本或 Python Parser，精準抓取 Summary block、Exit status (Pass/Fail) 及 Error/Warning ID。
 
-Log Summarizer Tool: 針對 GB 級別的 a / b / c log，寫死特定的 Regex 腳本或 Python Parser，專門抓取結尾的 Summary block、Exit status (Pass/Fail) 以及特定的 Error/Warning ID。
+Context Extractor Tool: 鎖定特定 Error ID 後，精準提取該行及上下各 50 行的 Context，附加真實行號並打包成輕量化 JSON 格式。
 
-Context Extractor Tool: 當抓到特定的 Error ID 後，提取該行及上下各 50 行的 Context，並附加上真實行號，打包成 JSON 格式。
+Error Codebook RAG (領域知識庫): 將 EDA 廠商 (如 Ansys, Cadence, Mentor) 的官方手冊建立為向量庫。依據抽取的 Error ID，直接檢索對應的官方解說與 Debug 建議。
 
-Error Codebook RAG (知識庫): 將你向 EDA 廠商要到的 Error Codebook Manuals (如 Ansys RedHawk, Cadence Voltus, Mentor Calibre 等) 建立成向量資料庫或結構化查詢表。當抽取出 Error ID 時，直接 Query 出對應的官方解說與 Debug 建議。
+2. 核心大腦與專家陣列：Agent 技能定義 (skill.md)
+系統採用中心化的派發架構，由 Orchestrator 統籌，各 Sub-agent 依據其專屬的 skill.md 執行特定任務。
 
-B. Sub-Agent Layer (領域專家子代理)
-每個 Sub-agent 只專注處理自己階段被壓縮後的關鍵資訊。
+🧠 Orchestrator Agent (編排與根因推理大腦)
+【orchestrator_skill.md】
 
-a Debug Agent: 負責判讀 a log 的精華片段。判斷是否有 Short, Open, 或 Device Mismatch，並標示出有問題的 Net names。
+Role (角色): 系統總指揮與跨階段根因分析師。
 
-b Extraction Debug Agent: 判讀 b 萃取階段的 log。檢查是否有缺失的 layer mapping、未定義的 vias、或是不合理的電阻/電容值警告。
+Core Skills (核心技能):
 
-c Debug Agent: 結合 c error codebook，判讀 c 階段的 floating nets, missing vias, IR drop violation 或 electromigration 警告。
+Task_Delegation: 解析 User 需求，並並行或依序派發解析任務給對應的 Domain Sub-agents。
 
-C. Orchestrator Agent (編排與根因推理大腦)
-這是整個 Framework 的核心。它不自己讀 log，而是綜合三個 Sub-agents 的報告，執行跨階段根因推導 (Cross-stage Root Cause Analysis)。
+Cross_Stage_Reasoning: 具備 a -> b -> c 的全域硬體依賴關係邏輯。
 
-2. 核心工作流：因果鏈推理 (Causal Chain Logic)
-為了實現你提到的「找出連鎖反應的真正上游原因」，Orchestrator Agent 必須具備依序向下推導的邏輯思維：
+Noise_Cancellation: 識別下游錯誤是否為上游缺陷的連鎖反應，並執行降級與過濾。
 
-a 優先權審查： Orchestrator 首先檢視 a Agent 的報告。如果 a 階段發現 VDD_CORE 存在 Mismatch 或 Open，系統會將此標記為 Blocker (阻斷性根因)。
+Decision_Reporting: 彙整專家報告，輸出具備 Action Item 的人類可讀決策報告。
 
-噪音過濾 (Noise Cancellation)： 當 Orchestrator 檢視 b 和 c Agent 的報告時，如果發現 c 回報了數百個與 VDD_CORE 相關的 Floating net 或 IR Drop 錯誤，它會主動將這些 c 錯誤降級。
+🕵️‍♂️ a Debug Agent (a 領域專家)
+【a_agent_skill.md】
 
-生成最終決策報告： 系統最終輸出給 User 的結論不會是「你有 1 個 a 錯誤和 300 個 c 錯誤」，而是結構化的人話：
+Role (角色): 專注於 a 階段 log 的精煉與診斷。
 
-「系統在 c 階段偵測到大量 floating net (VDD_CORE)，但追溯上游發現 a 階段該 net 存在 Mismatch。這 300 個 c 警告為連鎖效應噪音。Root Cause: a Mismatch at VDD_CORE。Action Item: 請先修復 a，暫略 c log。」
+Core Skills (核心技能):
 
-3. 專案開發階段計畫 (Implementation Roadmap)
-建議將此專案分為四個階段來迭代開發，確保每一步的準確性：
+Topology_Analysis: 判讀 a 階段的 Short, Open, 或 Device Mismatch 錯誤。
 
-Phase 1: 基礎建設與確定性工具開發 (Deterministic Tooling): 不碰 LLM，先處理資料流。收集 a, b, c 的真實 log 樣本（包含 Pass 與各類常見 Fail 案例）。開發 Python Parser，確保能穩定將數 GB 的 log 壓縮成不到 10KB 的結構化 JSON 片段（包含 Error ID, Context, Net names）。同時將 EDA Error Codebook 數位化，建立檢索 API 或 RAG 系統。
+Net_Identification: 精準標示出發生問題的關鍵 Net names (如 VDD_CORE) 與其路徑。
 
-Phase 2: Sub-Agent 單點突破 (Domain Expert Prompts): 驗證 LLM 理解單一領域的能力。為 a, b, c 各自撰寫 System Prompt。將 Phase 1 產生的 JSON 片段丟給對應的 Sub-agent，測試它們是否能準確結合 Error Codebook 產生正確的「單一階段」除錯建議。調整 Prompt 確保 Agent 不會產生幻覺。
+Codebook_Integration: 結合 RAG 查詢 a 特定的 Error Code 解方。
 
-Phase 3: Orchestrator 跨階段因果鏈開發 (The Core Value): 專案成敗的關鍵。開發 Orchestrator Agent，導入 a -> b -> c 的依賴關係邏輯。設計測試案例（例如：刻意植入 a 錯誤導致 c 大爆發的 log），驗證 Orchestrator 是否能成功執行「下游噪音過濾」，精準指出上游 Root Cause，而非單純把三個 Agent 的報告貼在一起。
+🕵️‍♂️ b Extraction Debug Agent (b 領域專家)
+【b_agent_skill.md】
 
-Phase 4: 使用者介面與 Post-run 整合 (UX & Pipeline Integration): 最後一哩路。設計一個簡單的 Web UI (例如 Streamlit) 或 CLI 介面。讓 User 可以輸入專案路徑，系統自動抓取三個階段的最新 log 進行分析，並輸出最終的「根因分析與行動建議報告」。
+Role (角色): 專注於 b 參數萃取階段的異常偵測。
 
-4. 關鍵成功要素 (Key Success Factors)
-Error Codebook 的精確度： 這是 Sub-agent 準確度的天花板。如果能拿到越詳細的 Manual，Agent 解釋問題的深度就越高。
+Core Skills (核心技能):
 
-Parser 的防呆機制： EDA tools 在不同 corner 或不同版本下，log 格式可能會微調。Deterministic parser 需要足夠強健（Robust），否則一開始抓錯段落，後面的 LLM 推理全都會歪掉。
+Layer_Mapping_Check: 檢查 log 中是否存在缺失的 layer mapping。
 
-定義因果關聯字典 (Causal Mapping)： 你可以事先準備一個輕量級的 mapping rule 給 Orchestrator（例如：a Open -> b Missing Via -> c Floating Net），當 LLM 發現這三個關鍵字同時出現時，能更具確定性地把因果鏈連起來。
+Via_Validation: 掃描未定義的 vias 警告。
+
+RC_Anomaly_Detection: 標記不合理的電阻/電容值警告。
+
+🕵️‍♂️ c Debug Agent (c 領域專家)
+【c_agent_skill.md】
+
+Role (角色): 專注於 c 階段的電源與可靠度診斷。
+
+Core Skills (核心技能):
+
+Power_Integrity_Scan: 判讀 floating nets, missing vias, 或 IR drop violation。
+
+Electromigration_Check: 分析 EM (Electromigration) 警告。
+
+Volume_Handling: 具備處理單一 Error ID 引發海量重複警告的初步分群能力。
+
+3. 核心工作流：任務指派與因果鏈推理 (Task Assignment & Causal Chain)
+當 User 提交專案路徑進行 Debug 時，系統的動態協作流程如下：
+
+任務初始化與派發 (Task Assignment)：
+
+Orchestrator 接收指令，呼叫 Log Summarizer Tool 確認 a, b, c 的 log 狀態。
+
+Orchestrator 根據 log 存在與否，將打包好的 JSON Context 同步 指派任務 給 a Agent, b Agent 與 c Agent。
+
+指令範例：「a Agent，請依據你的 a_agent_skill.md 解析這份 JSON，並回報 Blocker 級別的問題清單。」
+
+專家獨立作業 (Sub-agent Execution)：
+
+各個 Sub-agent 僅專注於自己的 JSON 資訊，並自主呼叫 Error Codebook RAG 獲取解譯，隨後將領域分析報告回傳給 Orchestrator。
+
+上游優先權審查 (Upstream Validation)：
+
+Orchestrator 接收所有報告，優先啟動 Cross_Stage_Reasoning 檢視 a Agent 的報告。
+
+若 a 階段發現 VDD_CORE 存在 Mismatch，Orchestrator 會立即將此標記為 Blocker (阻斷性根因)。
+
+噪音過濾與因果推理 (Noise Cancellation)：
+
+Orchestrator 接著比對 c Agent 的報告。若 c Agent 回報了「300 個與 VDD_CORE 相關的 Floating net 錯誤」，Orchestrator 會觸發 Noise_Cancellation 技能。
+
+判定邏輯：下游 (c) 的海量錯誤實為上游 (a) Mismatch 的物理連鎖反應，主動將這 300 個 c 錯誤「降級」或「過濾」。
+
+生成決策報告 (Final Reporting)：
+
+Orchestrator 最終不會無腦串接三份報告，而是輸出結構化結論：
+
+「系統在 c 階段偵測到大量 floating net (VDD_CORE)，但追溯上游發現 a 階段該 net 存在 Mismatch。這 300 個 c 警告判定為連鎖效應噪音。
+Root Cause: a Mismatch at VDD_CORE。
+Action Item: 請先修復 a 問題，目前暫略 c log。」
+
+4. 專案開發階段計畫 (Implementation Roadmap)
+建議分為四個階段迭代，穩紮穩打建立起整個 Multi-Agent 體系：
+
+Phase 1: 基礎建設與 Tooling (資料壓縮)： 不碰 LLM，專注開發 Python Parser 與 Regex。將數 GB 的真實 log 穩定壓縮成 <10KB 的結構化 JSON，並建立 Error Codebook 數位檢索庫。
+
+Phase 2: Sub-Agent 賦能與測試 (Skill 實作)： 將 skill.md 轉化為精準的 System Prompt。把 Phase 1 產生的 JSON 丟給對應的 Agent，確保其能產生正確的「單一階段」除錯建議，並嚴格控制幻覺。
+
+Phase 3: Orchestrator 大腦開發 (核心價值)： 開發 Orchestrator 的任務指派與回收機制。導入「a -> b -> c 因果關聯字典」，刻意餵入「上游小錯導致下游大爆發」的測試案例，驗證其噪音過濾與根因定位能力。
+
+Phase 4: 介面與自動化整合 (UX 落地)： 開發 Web UI (如 Streamlit)，讓 User 一鍵上傳專案。系統在背景自動跑完「資料擷取 -> 派發 -> 專家解析 -> 總編排收斂」的流水線，並呈現最終除錯報告。
