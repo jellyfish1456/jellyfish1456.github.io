@@ -9,7 +9,7 @@ Log Summarizer Tool: 針對 GB 級別的 a / b / c log，透過寫死的 Regex �
 
 Context Extractor Tool: 鎖定特定 Error ID 後，精準提取該行及上下各 50 行的 Context，附加真實行號並打包成輕量化 JSON 格式。
 
-Error Codebook RAG (領域知識庫): 將 EDA 廠商 (如 Ansys, Cadence, Mentor) 的官方手冊建立為向量庫。依據抽取的 Error ID，直接檢索對應的官方解說與 Debug 建議。
+Error Codebook RAG (領域知識庫): 將 EDA 廠商的官方手冊建立為向量庫。依據抽取的 Error ID，直接檢索對應的官方解說與 Debug 建議。
 
 2. 核心大腦與專家陣列：Agent 技能定義 (skill.md)
 系統採用中心化的派發架構，由 Orchestrator 統籌，各 Sub-agent 依據其專屬的 skill.md 執行特定任務。
