@@ -1,57 +1,56 @@
-先講結論:你的「orchestration agent 指派 sub-agent」直覺是對的,但理由不是為了炫技,而是兩個具體工程效益 —— context 隔離,以及跨階段的 root-cause 推理。這兩點決定了整個架構怎麼切。我把想法整理成一份 plan,先不動手實作。
-一個關鍵前提:別讓 LLM 直接讀整份 log
- 的 log 動輒幾百 MB 到 GB,多 corner 時更多。如果丟原始 log 給 agent 逐行讀,會很慢、很貴、而且它會「幻想」出根本不存在的行號。
-所以核心原則是 hybrid:確定性的 parser 當「工具」,LLM 當「推理層」。
+這是一個非常漂亮且具備實戰價值的架構設計。你提到的兩個核心原則——「Deterministic 工具負責壓縮，LLM 負責推理」以及「跨階段的 Causal Chain (因果鏈) 根因分析」——精準打中了目前 AI 落地 EDA (Electronic Design Automation) 領域的最大痛點：Token 成本、幻覺 (Hallucination) 以及下游 Error 噪音。
 
-Deterministic layer(tool):grep / regex / 抓 log 尾端 summary block / 檢查 exit status。負責把 GB 級 log 壓縮成「命中的 signature + 行號 + 前後文」的結構化片段。快、便宜、可重現。
-LLM / agent layer:只看被抽出來的片段,負責判讀嚴重性、排序、推測 root cause、產生人話說明、以及判斷「下游的一堆 error 其實只是上游一個原因的連鎖」。
+這個專案的賣點極強，以下為你梳理出這個 c Debugging Verification Framework 的系統專案計畫（Plan Mode）。
 
-value 幾乎全在後者;前者是把雜訊擋掉的守門員。
-為什麼要 sub-agent(而不是單 agent 三個 skill)
-MVP 其實單 agent 也能跑,但 sub-agent 在這裡有兩個實質好處:
+1. 系統架構設計 (Hybrid Multi-Agent System)
+系統將分為三個主要層級：資料處理層、子代理層（Domain Experts）、以及編排層（Orchestrator）。
 
-Context 隔離 —— 每個 sub-agent 只在自己的 context window 裡處理該階段的 log,產出一個精簡的 structured summary 回傳給 orchestrator。這樣三個巨大 log 不會互相污染彼此的 context,orchestrator 只需要在三份小 summary 上做推理。
-各自帶不同的 skill 與 tool adapter —— 
+A. Deterministic Parsing Layer (確定性工具層)
+這是系統的第一道防線，作為 Agent 可呼叫的 Tools。
 
-Sub-agent 的職責大致是:
+Log Summarizer Tool: 針對 GB 級別的 a / b / c log，寫死特定的 Regex 腳本或 Python Parser，專門抓取結尾的 Summary block、Exit status (Pass/Fail) 以及特定的 Error/Warning ID。
 
-a log analyzer — mismatch / short / open / missing device / property error
-b  extraction log analyzer — tech file / missing layer / netlist / SPEF 產出問題
-c log analyzer — missing power pad、floating net、缺 輸入,以及真正的 IR drop / EM 違規
+Context Extractor Tool: 當抓到特定的 Error ID 後，提取該行及上下各 50 行的 Context，並附加上真實行號，打包成 JSON 格式。
 
-這個框架最該做對的一件事:分清「flow 壞了」vs「signoff 違規」
-一個 debugging framework 如果只回「有 error / warning」其實幫助有限。真正有用的是把兩類東西分開:
+Error Codebook RAG (知識庫): 將你向 EDA 廠商要到的 Error Codebook Manuals (如 Ansys RedHawk, Cadence Voltus, Mentor Calibre 等) 建立成向量資料庫或結構化查詢表。當抽取出 Error ID 時，直接 Query 出對應的官方解說與 Debug 建議。
 
-Flow / setup failure:tool 根本沒跑完(缺輸入、license、tech 設定錯)。→ user 要去修環境或設定。
-Design violation:run 有完成,但報出 IR drop / EM 超標。→ 這是真正的設計問題,要回去改 PG network / 加 pad。
+B. Sub-Agent Layer (領域專家子代理)
+每個 Sub-agent 只專注處理自己階段被壓縮後的關鍵資訊。
 
-同一個「ERROR」字串,這兩種意義天差地別。skill 裡要把這個分類編碼進去。
-跨階段 root-cause —— 這才是 AI agent 打贏 grep script 的地方
-c 掛掉,很常見的真因其實在上游:a 有 mismatch → extraction 出來的 netlist 就不對 → c一堆 floating/missing net。單獨看 c log 你只會看到一堆下游噪音。
-所以 orchestrator 拿到三份 summary 後,要做的不是把 error 加總,而是沿著 a->b->c 的因果鏈往回推,輸出類似:「c 的 32 個 floating net 警告,root cause 是 b 在 net VDD_CORE 的 mismatch,建議先修 a」。這是你這個 project 的賣點。
-Skill 在這裡扮演什麼
-每個階段一個 SKILL.md,內容是該 EDA tool 的 hard-won 知識:log 格式怎麼 parse、已知 signature → 含義的對照表、severity map、常見 root cause 與修法。這正是 skill 機制的甜蜜點 —— 把工程師腦袋裡「看到這行代表什麼」的經驗沉澱成可累積的 signature library,之後遇到新 pattern 就往裡加。
-Sub-agent → Orchestrator 的契約(先定這個)
-最該先定義的不是程式,是回傳的 structured schema,因為它是整個系統的介面。大概像:
-{ stage, tool, status: completed|failed,
-  findings: [ { severity, signature, location(file:line),
-               category: flow_error|design_violation,
-               root_cause_hint } ] }
-schema 定死了,三個 sub-agent 就能各自獨立開發、orchestrator 也能穩定消化。
-先用文字把架構講完,配一張圖會更清楚各層怎麼疊。這張圖把分層架構畫清楚:log 從上往下,經過三個各自帶 skill 與 parser 的 sub-agent,最後由 orchestrator 做跨階段關聯並產出報告。
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation-duration: 0.25s;
-    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  }
-VvisualizeVvisualize show_widget建議的建置順序(先別急著把三階段一起做)
-第一步先定 schema(sub-agent → orchestrator 的 structured findings),這是整個系統的介面,定死後三個 agent 可以各自獨立開發。
-接著單一階段跑通端到端 —— 建議從 c 開始(你最熟、signature 最好蒐集),把「deterministic parser + c skill + 產出 findings」一路做完,驗證判讀品質。
-然後複製到 a 與 b,補上各自的 skill 與 signature library。
-最後才接 orchestrator + 跨階段關聯,這時三份 findings 都在了,root-cause 推理才有料可推。之後再擴充報告 UX、多 corner 彙整、更多 tool adapter。
-先把最容易踩雷的關鍵抓穩,再往外長,會比一次全做穩很多。
-幾個會影響設計、值得你先決定的分岔
-底層要用什麼跑?你說是「skill project」,那 Claude Agent SDK / Claude Code 的 subagent + Skills 是最自然的對應;若你偏好 LangGraph 之類自己編排也行,但 skill 與 sub-agent 的實作方式會不同。
+a Debug Agent: 負責判讀 a log 的精華片段。判斷是否有 Short, Open, 或 Device Mismatch，並標示出有問題的 Net names。
 
-log 規模多大、要不要 multi-corner?幾百 MB 以上就得先想 streaming / 預過濾,不然 parser 這關會卡。
+b Extraction Debug Agent: 判讀 b 萃取階段的 log。檢查是否有缺失的 layer mapping、未定義的 vias、或是不合理的電阻/電容值警告。
+
+c Debug Agent: 結合 c error codebook，判讀 c 階段的 floating nets, missing vias, IR drop violation 或 electromigration 警告。
+
+C. Orchestrator Agent (編排與根因推理大腦)
+這是整個 Framework 的核心。它不自己讀 log，而是綜合三個 Sub-agents 的報告，執行跨階段根因推導 (Cross-stage Root Cause Analysis)。
+
+2. 核心工作流：因果鏈推理 (Causal Chain Logic)
+為了實現你提到的「找出連鎖反應的真正上游原因」，Orchestrator Agent 必須具備依序向下推導的邏輯思維：
+
+a 優先權審查： Orchestrator 首先檢視 a Agent 的報告。如果 a 階段發現 VDD_CORE 存在 Mismatch 或 Open，系統會將此標記為 Blocker (阻斷性根因)。
+
+噪音過濾 (Noise Cancellation)： 當 Orchestrator 檢視 b 和 c Agent 的報告時，如果發現 c 回報了數百個與 VDD_CORE 相關的 Floating net 或 IR Drop 錯誤，它會主動將這些 c 錯誤降級。
+
+生成最終決策報告： 系統最終輸出給 User 的結論不會是「你有 1 個 a 錯誤和 300 個 c 錯誤」，而是結構化的人話：
+
+「系統在 c 階段偵測到大量 floating net (VDD_CORE)，但追溯上游發現 a 階段該 net 存在 Mismatch。這 300 個 c 警告為連鎖效應噪音。Root Cause: a Mismatch at VDD_CORE。Action Item: 請先修復 a，暫略 c log。」
+
+3. 專案開發階段計畫 (Implementation Roadmap)
+建議將此專案分為四個階段來迭代開發，確保每一步的準確性：
+
+Phase 1: 基礎建設與確定性工具開發 (Deterministic Tooling): 不碰 LLM，先處理資料流。收集 a, b, c 的真實 log 樣本（包含 Pass 與各類常見 Fail 案例）。開發 Python Parser，確保能穩定將數 GB 的 log 壓縮成不到 10KB 的結構化 JSON 片段（包含 Error ID, Context, Net names）。同時將 EDA Error Codebook 數位化，建立檢索 API 或 RAG 系統。
+
+Phase 2: Sub-Agent 單點突破 (Domain Expert Prompts): 驗證 LLM 理解單一領域的能力。為 a, b, c 各自撰寫 System Prompt。將 Phase 1 產生的 JSON 片段丟給對應的 Sub-agent，測試它們是否能準確結合 Error Codebook 產生正確的「單一階段」除錯建議。調整 Prompt 確保 Agent 不會產生幻覺。
+
+Phase 3: Orchestrator 跨階段因果鏈開發 (The Core Value): 專案成敗的關鍵。開發 Orchestrator Agent，導入 a -> b -> c 的依賴關係邏輯。設計測試案例（例如：刻意植入 a 錯誤導致 c 大爆發的 log），驗證 Orchestrator 是否能成功執行「下游噪音過濾」，精準指出上游 Root Cause，而非單純把三個 Agent 的報告貼在一起。
+
+Phase 4: 使用者介面與 Post-run 整合 (UX & Pipeline Integration): 最後一哩路。設計一個簡單的 Web UI (例如 Streamlit) 或 CLI 介面。讓 User 可以輸入專案路徑，系統自動抓取三個階段的最新 log 進行分析，並輸出最終的「根因分析與行動建議報告」。
+
+4. 關鍵成功要素 (Key Success Factors)
+Error Codebook 的精確度： 這是 Sub-agent 準確度的天花板。如果能拿到越詳細的 Manual，Agent 解釋問題的深度就越高。
+
+Parser 的防呆機制： EDA tools 在不同 corner 或不同版本下，log 格式可能會微調。Deterministic parser 需要足夠強健（Robust），否則一開始抓錯段落，後面的 LLM 推理全都會歪掉。
+
+定義因果關聯字典 (Causal Mapping)： 你可以事先準備一個輕量級的 mapping rule 給 Orchestrator（例如：a Open -> b Missing Via -> c Floating Net），當 LLM 發現這三個關鍵字同時出現時，能更具確定性地把因果鏈連起來。
