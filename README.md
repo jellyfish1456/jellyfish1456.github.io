@@ -53,7 +53,7 @@ Layer_Mapping_Check: 檢查 log 中是否存在缺失的 layer mapping。
 
 Via_Validation: 掃描未定義的 vias 警告。
 
-RC_Anomaly_Detection: 標記不合理的電阻/電容值警告。
+nomaly_Detection: 標記不合理警告。
 
 🕵️‍♂️ c Debug Agent (c 領域專家)
 【c_agent_skill.md】
@@ -62,9 +62,7 @@ Role (角色): 專注於 c 階段的電源與可靠度診斷。
 
 Core Skills (核心技能):
 
-Power_Integrity_Scan: 判讀 floating nets, missing vias, 或 IR drop violation。
-
-Electromigration_Check: 分析 EM (Electromigration) 警告。
+Power_Integrity_Scan: 判讀 floating netsviolation。
 
 Volume_Handling: 具備處理單一 Error ID 引發海量重複警告的初步分群能力。
 
