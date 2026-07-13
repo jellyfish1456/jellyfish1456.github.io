@@ -1210,5 +1210,225 @@
         ]
       }
     ]
+  },
+  {
+    "id": "seoul",
+    "city": "Seoul",
+    "cityZh": "首爾",
+    "country": "South Korea",
+    "countryZh": "韓國",
+    "flag": "🇰🇷",
+    "tagline": "Palaces and hanok alleys meet neon night markets and futuristic architecture.",
+    "coverPhoto": "https://commons.wikimedia.org/wiki/Special:FilePath/Gyeonghoeru%20%28Royal%20Banquet%20Hall%29%20at%20Gyeongbokgung%20Palace%2C%20Seoul.jpg?width=1600",
+    "bestSeason": "Apr (cherry blossom) / Oct–Nov (autumn foliage)",
+    "igTags": [
+      "seoul",
+      "korea",
+      "southkorea",
+      "서울",
+      "fujifilm"
+    ],
+    "spots": [
+      {
+        "name": "Gyeongbokgung Palace",
+        "nameZh": "景福宮",
+        "tags": [
+          "palace",
+          "history",
+          "heritage"
+        ],
+        "recommendedRecipe": "Kodachrome 64",
+        "bestTime": "Opening (09:00) for soft light; catch the changing-of-the-guard ceremony mid-morning",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gyeonghoeru%20%28Royal%20Banquet%20Hall%29%20at%20Gyeongbokgung%20Palace%2C%20Seoul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Front%20view%20of%20the%20Imperial%20Throne%20Hall%20Geunjeongjeon%20at%20Gyeongbokgung%20Palace%20with%20blue%20sky%20in%20Seoul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Interior%20view%20of%20the%20Geunjeongjeon%20Hall%20at%20Gyeongbokgung%20Palace%20in%20Seoul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot Gyeonghoeru pavilion mirrored in its pond — go early for still water and a clean reflection (photo 1).",
+          "Frame the throne hall Geunjeongjeon straight down the stone court with the rank-stones as leading lines (photo 2).",
+          "Look up into the painted dancheong eaves and coffered ceilings for rich colour detail (photo 3).",
+          "Visitors in rented hanbok add colour — a great foreground subject against the grey stone."
+        ],
+        "gear": "Wide 16mm for the courts; 35mm for hanbok portraits. Kodachrome 64's muted warmth suits the aged wood and paint.",
+        "igTags": [
+          "gyeongbokgung",
+          "경복궁",
+          "seoul",
+          "fujifilm"
+        ]
+      },
+      {
+        "name": "Bukchon Hanok Village",
+        "nameZh": "北村韓屋村",
+        "tags": [
+          "hanok",
+          "alley",
+          "traditional"
+        ],
+        "recommendedRecipe": "Classic Negative Street",
+        "bestTime": "Early morning or blue hour — quiet lanes, soft light, respectful of residents",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bukchon-ro%2011-gil%20street%20with%20hanok%20houses%20at%20blue%20hour%20in%20Bukchon%20Hanok%20Village%20Seoul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Traditional%20hanok%20house%20with%20wooden%20doors%20along%20a%20steeply%20sloping%20street%20in%20Bukchon%20Hanok%20Village%20Seoul.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot up the sloping Bukchon-ro 11-gil lane with tiled hanok roofs receding and the modern skyline beyond (photo 1).",
+          "At blue hour the lantern-lit alleys glow — brace for a steady low-light frame.",
+          "Isolate a single hanok gate, wooden door or stone wall for texture (photo 2). Keep noise down — people live here."
+        ],
+        "gear": "23–35mm prime. Classic Neg. gives the tiles and wood a punchy-yet-faded documentary feel.",
+        "igTags": [
+          "bukchonhanokvillage",
+          "북촌한옥마을",
+          "seoul",
+          "hanok"
+        ]
+      },
+      {
+        "name": "N Seoul Tower (Namsan)",
+        "nameZh": "南山首爾塔",
+        "tags": [
+          "viewpoint",
+          "cityscape",
+          "night"
+        ],
+        "recommendedRecipe": "Eterna Cinema Street",
+        "bestTime": "Sunset into blue hour — the city lights come up as the sky still holds colour",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoul%20Tower%20%284394893276%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/N%20Seoul%20Tower%20view%202.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoul%20City%20Core%20from%20N-Seoul%20Tower%20%285464351080%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot the tower rising from wooded Namsan against clear sky from the plaza below (photo 1).",
+          "From the observation deck, capture the endless city at dusk — the golden-to-blue gradient over the skyline (photo 2).",
+          "Compress the dense downtown grid with a short tele from the top (photo 3).",
+          "The 'love-lock' fences make a colourful foreground for the skyline."
+        ],
+        "gear": "Wide for the tower; 50–200mm to compress the skyline. Tripod for blue hour. Eterna's muted tones suit hazy city light.",
+        "igTags": [
+          "nseoultower",
+          "namsan",
+          "남산서울타워",
+          "seoul"
+        ]
+      },
+      {
+        "name": "Myeongdong",
+        "nameZh": "明洞",
+        "tags": [
+          "street",
+          "night",
+          "neon"
+        ],
+        "recommendedRecipe": "Cinestill 800T",
+        "bestTime": "Evening, when the shopping streets fill with neon, crowds and street-food carts",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Namdaemun-ro%20and%20Aloft%20Seoul%20Myeongdong%20by%20night.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot down the neon-lit main drag with signboards stacked up both sides (photo 1).",
+          "Use the street-food carts' warm light and steam as a foreground against the cool neon.",
+          "Catch motion — buses and crowds — with a slower shutter for energy."
+        ],
+        "gear": "Fast 23–35mm, ISO 3200–6400. Cinestill 800T recipe nails the tungsten-neon night-cinema glow.",
+        "igTags": [
+          "myeongdong",
+          "명동",
+          "seoul",
+          "fujifilm"
+        ]
+      },
+      {
+        "name": "Gwangjang Market",
+        "nameZh": "廣藏市場",
+        "tags": [
+          "market",
+          "food",
+          "street"
+        ],
+        "recommendedRecipe": "Fujicolor 200",
+        "bestTime": "Late morning to evening, when the food alleys are busiest",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gwangjang%20Market%2C%20Seoul%2002.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Seoul-Gwangjang%20Market-01.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot down the covered food alley with hanging flags and stall lights as a bright leading line (photos 1–2).",
+          "Frame a bindaetteok or gimbap stall mid-action — sizzling pans and colourful banchan.",
+          "Grab candid diners at the counters; ask before close portraits."
+        ],
+        "gear": "Fast standard zoom, ISO 1600+. Fujicolor 200's punchy colour loves the food and flags.",
+        "igTags": [
+          "gwangjangmarket",
+          "광장시장",
+          "seoul",
+          "koreanfood"
+        ]
+      },
+      {
+        "name": "Dongdaemun Design Plaza (DDP)",
+        "nameZh": "東大門設計廣場",
+        "tags": [
+          "architecture",
+          "night",
+          "modern"
+        ],
+        "recommendedRecipe": "Vintage Cinema",
+        "bestTime": "Blue hour to night, when the curving facade is lit and LED roses glow",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dongdaemun%20Design%20Plaza%20at%20night%2C%20Seoul%2C%20Korea.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Use the flowing aluminium curves of Zaha Hadid's building as sweeping abstract lines (photo 1).",
+          "At night, long-expose the adjacent road for light trails against the silver facade.",
+          "Get low and let the ramps and seams lead the eye through the frame."
+        ],
+        "gear": "Wide for the curves; tripod + ND for light trails. Vintage Cinema recipe suits the moody metallic night look.",
+        "igTags": [
+          "ddp",
+          "dongdaemun",
+          "동대문디자인플라자",
+          "seoul"
+        ]
+      }
+    ]
   }
 ]
