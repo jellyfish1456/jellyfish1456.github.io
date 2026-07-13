@@ -1430,5 +1430,116 @@
         ]
       }
     ]
+  },
+  {
+    "id": "korea-ginkgo",
+    "city": "Autumn Ginkgo Trail",
+    "cityZh": "秋季銀杏名所",
+    "country": "South Korea",
+    "countryZh": "韓國",
+    "flag": "🇰🇷",
+    "tagline": "Korea's famous golden ginkgo (은행나무) — glowing yellow in early–mid November.",
+    "coverPhoto": "https://commons.wikimedia.org/wiki/Special:FilePath/Asan%20Gingko%20Tree%20Road.jpg?width=1600",
+    "bestSeason": "Late Oct – mid Nov (peak golden ~first two weeks of November)",
+    "igTags": [
+      "ginkgo",
+      "은행나무",
+      "koreaautumn",
+      "autumnkorea",
+      "fujifilm"
+    ],
+    "spots": [
+      {
+        "name": "Asan Gokgyocheon Ginkgo Road",
+        "nameZh": "牙山 곡교천 銀杏木道",
+        "tags": [
+          "ginkgo",
+          "avenue",
+          "golden"
+        ],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Golden hour late afternoon — backlight turns the whole tunnel to glowing gold; weekdays to avoid crowds",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Asan%20Gingko%20Tree%20Road.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Stand in the middle of the ~2 km avenue and shoot straight down the tunnel so the ginkgos arch overhead and converge — put a lone walker in the distance for scale (photo 1).",
+          "Get low to the ground and include the thick carpet of fallen yellow leaves as foreground.",
+          "Shoot into the late sun so the backlit leaves glow translucent gold; expose for the highlights and let figures go to silhouette."
+        ],
+        "gear": "16–35mm for the tunnel; a small aperture (f/8–11) keeps the avenue sharp front-to-back. Velvia makes the yellow sing.",
+        "igTags": [
+          "asanginkgo",
+          "곡교천은행나무길",
+          "ginkgoroad",
+          "korea"
+        ]
+      },
+      {
+        "name": "Yongmunsa Temple Giant Ginkgo",
+        "nameZh": "龍門寺 千年銀杏",
+        "tags": [
+          "ginkgo",
+          "temple",
+          "ancient tree"
+        ],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Late morning to midday for even light on the huge crown; peak colour early–mid Nov",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%96%91%ED%8F%89%20%EC%9A%A9%EB%AC%B8%EC%82%AC%20%EC%9D%80%ED%96%89%EB%82%98%EB%AC%B4%20%285%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "This is Korea's largest ginkgo (~1,100 years, ~60 m) — back up and shoot wide/low to fit the whole golden crown against blue sky (photo 1).",
+          "Frame the tree with the temple's tiled roof or a stone lantern in the foreground for scale and place.",
+          "Move around to backlight the canopy so the millions of fan-shaped leaves glow."
+        ],
+        "gear": "Ultra-wide to contain the giant; a person at the base shows its scale. Polariser deepens the sky behind the gold.",
+        "igTags": [
+          "yongmunsa",
+          "용문사은행나무",
+          "ginkgo",
+          "yangpyeong"
+        ]
+      },
+      {
+        "name": "Seoul Palace-Wall Ginkgo",
+        "nameZh": "首爾宮牆銀杏",
+        "tags": [
+          "ginkgo",
+          "street",
+          "urban"
+        ],
+        "recommendedRecipe": "Kodachrome 64",
+        "bestTime": "Mid-morning or golden hour along the palace stone walls (Deoksugung / Changgyeonggung area)",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Korea%20October%2003%20%288124122156%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/2012FallSketch09%20%288146968033%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Play the golden ginkgo canopy against the grey tiled hanok/palace wall — the warm-cool colour contrast is the shot (photo 1).",
+          "Silhouette a person walking the stone-wall path under the yellow canopy for a classic autumn-in-Seoul frame (photo 2).",
+          "Look straight up into the canopy for an all-gold abstract, or catch leaves mid-fall with a faster shutter."
+        ],
+        "gear": "35mm (50mm equiv) for the street feel. Kodachrome 64 keeps the gold rich but natural against the stone.",
+        "igTags": [
+          "seoulautumn",
+          "은행나무",
+          "ginkgo",
+          "seoul"
+        ]
+      }
+    ]
   }
 ]
