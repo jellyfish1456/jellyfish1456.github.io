@@ -1541,5 +1541,173 @@
         ]
       }
     ]
+  },
+  {
+    "id": "alishan",
+    "city": "Alishan",
+    "cityZh": "阿里山",
+    "country": "Taiwan",
+    "countryZh": "台灣",
+    "flag": "🇹🇼",
+    "tagline": "Taiwan's legendary mountain — sunrise over a sea of clouds, giant cypress and the little red forest train.",
+    "coverPhoto": "https://commons.wikimedia.org/wiki/Special:FilePath/Just%20after%20sunrise%20in%20Alishan%202019.jpg?width=1600",
+    "bestSeason": "Year-round for sunrise & sea of clouds; mid-Mar–early Apr for cherry blossom",
+    "igTags": [
+      "alishan",
+      "阿里山",
+      "taiwan",
+      "seaofclouds",
+      "fujifilm"
+    ],
+    "spots": [
+      {
+        "name": "Sunrise & Sea of Clouds",
+        "nameZh": "日出雲海",
+        "tags": [
+          "sunrise",
+          "landscape",
+          "clouds"
+        ],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Pre-dawn — take the Zhushan sunrise train and be in position 20–30 min before the sun clears the horizon",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Just%20after%20sunrise%20in%20Alishan%202019.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Alishan%20sunrise.JPG?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Alishan%20predawn.JPG?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "From the Zhushan viewing deck, place a silhouetted cypress or ridge in the foreground so the sea of clouds and the rising sun have scale (photo 1).",
+          "Shoot a sun-star: stop down to f/11–16 as the sun peeks over the far ridge for crisp rays (photo 2).",
+          "Before sunrise, capture the blue-hour layers of mist filling the valleys — expose long and keep ISO low (photo 3)."
+        ],
+        "gear": "Tripod essential in the dark. Bracket exposures for the huge dynamic range between sky and shadowed valley. Velvia makes the dawn colour glow.",
+        "igTags": [
+          "alishansunrise",
+          "阿里山日出",
+          "seaofclouds",
+          "雲海"
+        ]
+      },
+      {
+        "name": "Forest Railway (Little Red Train)",
+        "nameZh": "阿里山森林鐵路",
+        "tags": [
+          "train",
+          "railway",
+          "forest"
+        ],
+        "recommendedRecipe": "Classic Negative Street",
+        "bestTime": "Golden hour, or a misty/rainy day when the red carriages pop against grey-green forest",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Train%20on%20the%20Alishan%20Forest%20Railway%20main%20line%20in%20rain.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Logging%20steam%20train%20on%20the%20Alishan%20Forest%20Railway%20c.%202021.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Train%20near%20the%20Alishan%20Station.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "The red carriages against wet, misty forest are the signature shot — meter for the red and let the background go moody (photo 1).",
+          "Find a curve or bridge and shoot the train sweeping through so the track leads the eye (photo 3).",
+          "For the vintage steam locomotive, get low and side-on among the cypress to frame the smoke and trees (photo 2)."
+        ],
+        "gear": "35–90mm to compress the train against the forest. A fast shutter (≥1/250s) freezes the moving train. Classic Neg. gives that punchy-yet-nostalgic railway look.",
+        "igTags": [
+          "alishanrailway",
+          "阿里山森林鐵路",
+          "foresttrain",
+          "taiwan"
+        ]
+      },
+      {
+        "name": "Giant Trees & Forest Trails",
+        "nameZh": "神木與森林步道",
+        "tags": [
+          "forest",
+          "ancient tree",
+          "misty"
+        ],
+        "recommendedRecipe": "Eterna Cinema Street",
+        "bestTime": "Early morning when mist drifts through the cypress and the light is soft",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Alishan%20Forest%20Trail%20%E9%98%BF%E9%87%8C%E5%B1%B1%E6%A3%AE%E6%9E%97%E6%AD%A5%E9%81%93%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80%20Alishan%20Forest%20Recreation%20Area%20-%20panoramio%20%282%29.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E6%A3%AE%E6%9E%97%E6%AD%A5%E9%81%93%20Alishan%20Forest%20Trail%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Put a person on the path beneath a giant thousand-year cypress to show its enormous scale (photo 1).",
+          "Use the wooden boardwalks and stone steps as leading lines winding into the misty forest (photo 2).",
+          "Shoot upward along the towering trunks; on a misty morning, look for light beams filtering through the canopy."
+        ],
+        "gear": "Wide 16mm for the giants; a tripod helps in the dim forest. Eterna's gentle contrast keeps the deep greens and shadows filmic.",
+        "igTags": [
+          "alishanforest",
+          "阿里山神木",
+          "cypressforest",
+          "taiwan"
+        ]
+      },
+      {
+        "name": "Cherry Blossoms",
+        "nameZh": "阿里山櫻花",
+        "tags": [
+          "sakura",
+          "spring",
+          "pink"
+        ],
+        "recommendedRecipe": "Fujicolor 200",
+        "bestTime": "Mid-March to early April — early morning for soft light and fewer crowds",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E6%A3%AE%E6%9E%97%E7%81%AB%E8%BB%8A%E8%88%87%E6%AB%BB%E8%8A%B1%E5%9C%A8%E8%87%BA%E7%81%A3%E5%98%89%E7%BE%A9%E9%98%BF%E9%87%8C%E5%B1%B1%20Tourist%20Train%20and%20Cherry%20blossom%20-%20Sakura%20in%20Alishan%2C%20Chiayi%2C%20TAIWAN.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E6%AB%BB%E8%8A%B1%E5%9C%A8%E8%87%BA%E7%81%A3%E5%98%89%E7%BE%A9%E9%98%BF%E9%87%8C%E5%B1%B1%20Cherry%20blossom%20-%20Sakura%20in%20Alishan%2C%20Chiayi%2C%20TAIWAN.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E6%AB%BB%E8%8A%B1%E9%90%B5%E9%81%93%20Alishan%20Sakura%20Railway%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "The forest train passing through a tunnel of white cherry blossom is THE Alishan spring shot — pre-focus on the track and wait for the train (photos 1, 3).",
+          "Frame pink Yoshino/Chishima blossoms against the wooden boardwalks and dark cypress for contrast (photo 2).",
+          "Shoot blossom branches against blue sky, or look up into a full canopy for an all-pink frame."
+        ],
+        "gear": "35–90mm to isolate blossom clusters; wider for the train-and-sakura scene. Fujicolor 200's soft, warm colour flatters the pastel petals.",
+        "igTags": [
+          "alishansakura",
+          "阿里山櫻花",
+          "cherryblossom",
+          "taiwan"
+        ]
+      }
+    ]
   }
 ]
