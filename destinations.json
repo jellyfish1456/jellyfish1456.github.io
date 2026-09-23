@@ -1554,10 +1554,8 @@
     "bestSeason": "Year-round for sunrise & sea of clouds; mid-Mar–early Apr for cherry blossom",
     "igTags": [
       "alishan",
-      "taiwan",
       "taiwantravel",
-      "seaofclouds",
-      "fujifilm"
+      "seaofclouds"
     ],
     "spots": [
       {
@@ -1594,7 +1592,6 @@
           "alishan",
           "alishansunrise",
           "seaofclouds",
-          "taiwan",
           "taiwantravel",
           "阿里山日出"
         ]
@@ -1633,7 +1630,6 @@
           "alishan",
           "alishanforestrailway",
           "foresttrain",
-          "taiwan",
           "taiwantravel",
           "阿里山森林鐵路"
         ]
@@ -1672,7 +1668,6 @@
           "alishan",
           "alishanforest",
           "cypressforest",
-          "taiwan",
           "taiwantravel",
           "阿里山神木"
         ]
@@ -1712,8 +1707,147 @@
           "alishansakura",
           "cherryblossom",
           "sakura",
-          "taiwan",
           "阿里山櫻花"
+        ]
+      },
+      {
+        "name": "Sister Ponds",
+        "nameZh": "姊妹潭",
+        "tags": [
+          "lake",
+          "forest",
+          "reflection"
+        ],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Early morning for calm water and mist; the two ponds sit a short walk apart",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E6%99%AF%E9%BB%9E%E5%A7%8A%E5%A6%B9%E6%BD%AD%E7%9A%84%E5%A7%8A%E6%BD%AD.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E6%9E%97%E6%A5%AD%E6%9A%A8%E9%90%B5%E9%81%93%E6%96%87%E5%8C%96%E6%99%AF%E8%A7%80%EF%BC%BF%E5%A7%8A%E5%A6%B9%E6%BD%AD.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Use the little thatched pavilion and its mirror reflection in the emerald pond as the centrepiece (photos 1–2).",
+          "Frame the pond through overhanging cypress branches for depth and a natural border.",
+          "On a misty morning the surrounding forest turns the water milky-green — shoot low to catch the reflection."
+        ],
+        "gear": "Standard zoom; a polariser controls surface glare so you can dial the reflection in or out. Velvia deepens the green water.",
+        "igTags": [
+          "alishan",
+          "sisterponds",
+          "alishanlake",
+          "taiwantravel",
+          "姊妹潭"
+        ]
+      },
+      {
+        "name": "Zhaoping Station",
+        "nameZh": "沼平車站",
+        "tags": [
+          "railway",
+          "station",
+          "cherry blossom"
+        ],
+        "recommendedRecipe": "Classic Negative Street",
+        "bestTime": "Spring for cherry blossom around the platform; golden hour otherwise",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E6%B2%BC%E5%B9%B3%E8%BB%8A%E7%AB%99%20Zhaoping%20Station%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Zhaoping%20Station%202023.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Zhaoping%20Station%20c.%202024%2006.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Shoot the timber station and platform with a red train pulled in — the wood, red carriage and mountains layer nicely (photos 1, 3).",
+          "In spring, frame the platform through pink cherry blossom for the classic Zhaoping shot (photo 2).",
+          "From the elevated walkway, look down the tracks curving away into the forest."
+        ],
+        "gear": "23–35mm for the platform scene. Classic Neg. gives the red train and wooden station a punchy, nostalgic feel.",
+        "igTags": [
+          "alishan",
+          "zhaopingstation",
+          "alishanforestrailway",
+          "taiwantravel",
+          "沼平車站"
+        ]
+      },
+      {
+        "name": "Shouzhen Temple",
+        "nameZh": "受鎮宮",
+        "tags": [
+          "temple",
+          "architecture",
+          "cherry blossom"
+        ],
+        "recommendedRecipe": "Velvia Landscape",
+        "bestTime": "Late morning for light on the ornate roof; spring adds cherry blossom around it",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E5%8F%97%E9%8E%AE%E5%AE%AE%E8%88%87%E6%AB%BB%E8%8A%B1%E6%96%9C%E6%99%AF.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E5%8F%97%E9%8E%AE%E5%AE%AE%E8%BF%91%E6%99%AF.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          },
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E5%8F%97%E9%8E%AE%E5%AE%AE%E8%88%87%E7%A5%9E%E6%9C%A8%E6%A0%B9%E9%83%A8.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "Frame the colourful, dragon-topped roofs against the cypress forest and blue sky (photos 1–2).",
+          "In spring, layer pink cherry blossom in the foreground with the temple behind (photo 1).",
+          "Include a giant tree stump or trunk beside the temple to show how it sits within the ancient forest (photo 3)."
+        ],
+        "gear": "Standard zoom; step back for the whole roofline. Velvia makes the temple's reds and golds pop against the greenery.",
+        "igTags": [
+          "alishan",
+          "shouzhentemple",
+          "taiwantemple",
+          "taiwantravel",
+          "受鎮宮"
+        ]
+      },
+      {
+        "name": "Three-Generation Tree",
+        "nameZh": "三代木",
+        "tags": [
+          "ancient tree",
+          "forest",
+          "landmark"
+        ],
+        "recommendedRecipe": "Eterna Cinema Street",
+        "bestTime": "Soft light of morning or an overcast day so the mossy bark holds detail",
+        "photos": [
+          {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/%E9%98%BF%E9%87%8C%E5%B1%B1%E7%9A%84%E7%A5%9E%E6%9C%A8%20-%20panoramio.jpg?width=1000",
+            "credit": "Wikimedia Commons"
+          }
+        ],
+        "angles": [
+          "This famous landmark is three generations of cypress grown from one root — shoot side-on to show the layered, intertwined trunks (photo 1).",
+          "Get low and include the mossy roots and the name marker for context and scale.",
+          "Fill the frame with the gnarled, moss-covered bark texture for an atmospheric detail shot."
+        ],
+        "gear": "Wide to fit the sprawling trunks; a tripod helps in the dim forest. Eterna keeps the greens and shadows soft and filmic.",
+        "igTags": [
+          "alishan",
+          "sandaimu",
+          "giantcypress",
+          "taiwantravel",
+          "三代木"
         ]
       }
     ]
