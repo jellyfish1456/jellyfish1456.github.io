@@ -1554,8 +1554,8 @@
     "bestSeason": "Year-round for sunrise & sea of clouds; mid-Mar–early Apr for cherry blossom",
     "igTags": [
       "alishan",
-      "阿里山",
       "taiwan",
+      "taiwantravel",
       "seaofclouds",
       "fujifilm"
     ],
@@ -1591,10 +1591,12 @@
         ],
         "gear": "Tripod essential in the dark. Bracket exposures for the huge dynamic range between sky and shadowed valley. Velvia makes the dawn colour glow.",
         "igTags": [
+          "alishan",
           "alishansunrise",
-          "阿里山日出",
           "seaofclouds",
-          "雲海"
+          "taiwan",
+          "taiwantravel",
+          "阿里山日出"
         ]
       },
       {
@@ -1628,10 +1630,12 @@
         ],
         "gear": "35–90mm to compress the train against the forest. A fast shutter (≥1/250s) freezes the moving train. Classic Neg. gives that punchy-yet-nostalgic railway look.",
         "igTags": [
-          "alishanrailway",
-          "阿里山森林鐵路",
+          "alishan",
+          "alishanforestrailway",
           "foresttrain",
-          "taiwan"
+          "taiwan",
+          "taiwantravel",
+          "阿里山森林鐵路"
         ]
       },
       {
@@ -1665,10 +1669,12 @@
         ],
         "gear": "Wide 16mm for the giants; a tripod helps in the dim forest. Eterna's gentle contrast keeps the deep greens and shadows filmic.",
         "igTags": [
+          "alishan",
           "alishanforest",
-          "阿里山神木",
           "cypressforest",
-          "taiwan"
+          "taiwan",
+          "taiwantravel",
+          "阿里山神木"
         ]
       },
       {
@@ -1702,10 +1708,12 @@
         ],
         "gear": "35–90mm to isolate blossom clusters; wider for the train-and-sakura scene. Fujicolor 200's soft, warm colour flatters the pastel petals.",
         "igTags": [
+          "alishan",
           "alishansakura",
-          "阿里山櫻花",
           "cherryblossom",
-          "taiwan"
+          "sakura",
+          "taiwan",
+          "阿里山櫻花"
         ]
       }
     ]
