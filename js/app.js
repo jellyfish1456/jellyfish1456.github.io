@@ -188,6 +188,17 @@ function openModal(id) {
   const tagsHtml = recipe.tags.map(t => `<span class="tag">#${t}</span>`).join(' ');
   document.getElementById('modal-tags').innerHTML = tagsHtml;
 
+  // Instagram hashtags for this recipe
+  const rigSec = document.getElementById('recipe-ig-section');
+  const rigEl = document.getElementById('recipe-ig');
+  if (recipe.igTags && recipe.igTags.length) {
+    rigSec.style.display = '';
+    rigEl.innerHTML = recipe.igTags.map(t =>
+      `<a class="ig-tag" href="https://www.instagram.com/explore/tags/${encodeURIComponent(t)}/" target="_blank" rel="noopener">#${t}</a>`).join('');
+  } else {
+    rigSec.style.display = 'none';
+  }
+
   const srcEl = document.getElementById('modal-source');
   if (recipe.recipeSource && recipe.recipeUrl) {
     srcEl.innerHTML = `📖 Recipe source: <a href="${recipe.recipeUrl}" target="_blank">${recipe.recipeSource}</a> — by ${recipe.author}`;
